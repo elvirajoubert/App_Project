@@ -1,4 +1,4 @@
-﻿namespace AppPrawject.Models.Model
+﻿namespace AppPrawject.Models
 {
     public class Pet
     {
