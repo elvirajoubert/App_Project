@@ -34,5 +34,28 @@
     }
 
 
+
+    @foreach (var pet in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelPet => pet.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelPet => pet.Breed)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelPet => pet.Weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelPet => pet.Image)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { })
+                @Html.ActionLink("Delete", "Delete", new { })
+            </td>
+        </tr>
+    }
 </table>
 
