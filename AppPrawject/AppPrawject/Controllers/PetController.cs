@@ -9,7 +9,7 @@ namespace AppPrawject.WebUI.Controllers
 
         private List<Pet> Pets = new List<Pet>();
 
-        //pet/index
+        //GET pet/index
         public IActionResult Index()
         {
             return View(Pets);
@@ -19,6 +19,16 @@ namespace AppPrawject.WebUI.Controllers
         public IActionResult Add()
         {
             return View();
+        }
+
+
+        [HttpPost]
+        public IActionResult Add(Pet newPet)
+        {
+            Pets.Add(newPet);
+            return View(nameof(Index), Pets);
+
+
         }
 
     }
