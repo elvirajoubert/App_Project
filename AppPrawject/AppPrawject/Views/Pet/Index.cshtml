@@ -3,9 +3,9 @@
 
 <h1>This is the list of Pets</h1>
 
-<a class="btn btn-primary" asp-action="add" asp-controller="pet">Add</a>
 
-<table>
+
+<table class="table">
     <tr>
         <th>Name</th>
         <th>Breed</th>
@@ -13,17 +13,6 @@
         <th>Image</th>
     </tr>
 
-    @foreach (var pet in Model)
-    {
-        <tr>
-            <td>@pet.Name  </td>
-            <td>@pet.Breed</td>
-            <td>@pet.Weight</td>
-            <td>@pet.Image</td>
-
-        </tr>
-
-    }
 
     @if (Model.Count == 0)
     {
@@ -40,24 +29,16 @@
     @foreach (var pet in Model)
     {
         <tr>
-            <td>
-                @Html.DisplayFor(modelPet => pet.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelPet => pet.Breed)
-            </td>
+            <td>@pet.Name</td>
+            <td>@pet.Breed</td>
+            <td>@pet.Weight</td>
+            <td>@pet.Image</td>
 
-            <td>
-                @Html.DisplayFor(modelPet => pet.Weight)
-            </td>
-            <td>
-                @Html.DisplayFor(modelPet => pet.Image)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { })
-                @Html.ActionLink("Delete", "Delete", new { })
-            </td>
         </tr>
     }
 </table>
 
+@if (Model.Count > 0)
+{
+    <a class="btn btn-primary" asp-action="add" asp-controller="pet">Add</a>
+}
