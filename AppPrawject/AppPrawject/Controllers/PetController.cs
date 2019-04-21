@@ -31,6 +31,11 @@ namespace AppPrawject.WebUI.Controllers
 
         }
 
+        public IActionResult Details()
+        {
+            return View();
+        }
+
 
 
     }
