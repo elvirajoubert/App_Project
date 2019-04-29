@@ -39,7 +39,8 @@
             <td>@pet.Weight</td>
             <td>@pet.Image</td>
             <td>
-                <a asp-controller="pet" asp-action="detail" asp-route-id="@pet.Id">Detail</a>
+                <a asp-controller="pet" asp-action="detail" asp-route-id="@pet.Id">Detail</a> |
+                <a asp-controller="pet" asp-action="edit" asp-route-id="@pet.Id">Edit</a>
                 <a href="#" class="js-open-modal" data-pet-id="@pet.Id">Delete</a>
 
         </tr>
