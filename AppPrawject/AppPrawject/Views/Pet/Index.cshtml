@@ -36,7 +36,7 @@
             <td>@pet.Image</td>
             <td>
                 <a asp-controller="pet" asp-action="detail" asp-route-id="@pet.Id">Detail</a>
-            </td>
+                <a href="#" class="js-open-modal">Delete</a>
 
         </tr>
     }
@@ -66,7 +66,7 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 <a id="js-delete-button" class="btn btn-primary">Delete</a>
 
-                @*<a asp-controller="property" asp-action="delete" asp-route-id="@property.Id">Delete</a>*@
+                @*<a asp-controller="property" asp-action="delete" asp-route-id="@pet.Id">Delete</a>*@
             </div>
         </div>
     </div>
@@ -78,8 +78,8 @@
     {
     <script>
         $('.js-open-modal').on('click', event => {
-            const propertyId = $(event.target).data('property-id');
-            const url = `/property/delete/${propertyId}`;
+            const petId = $(event.target).data('pet-id');
+            const url = `/pet/delete/${petId}`;
             $('#js-delete-button').attr('href', url);
 
             $('#delete-confirmation').modal('show');
