@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+
 namespace AppPrawject.Domain
 {
     public class Pet

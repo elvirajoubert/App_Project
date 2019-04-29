@@ -39,7 +39,7 @@ namespace AppPrawject.WebUI.Controllers
                 return View(nameof(Index), Pets);
             }
 
-            return View("form", newPet);
+            return View("form");
 
 
         }
