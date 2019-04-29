@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.438
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppPrawject.WebUI", "AppPrawject\AppPrawject.WebUI.csproj", "{289575DC-D938-4A0E-9F4E-DD0D33414997}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppPrawject.Models", "AppPrawject.Model\AppPrawject.Models.csproj", "{61719539-35A4-41FC-8D56-A8FD8AF1E8F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppPrawject.Domain", "AppPrawject.Model\AppPrawject.Domain.csproj", "{61719539-35A4-41FC-8D56-A8FD8AF1E8F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

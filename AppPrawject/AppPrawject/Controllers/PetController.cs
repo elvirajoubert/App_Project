@@ -1,7 +1,8 @@
-﻿using AppPrawject.Models;
+﻿using AppPrawject.Domain;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
+
 
 namespace AppPrawject.WebUI.Controllers
 {
@@ -28,10 +29,17 @@ namespace AppPrawject.WebUI.Controllers
 
 
         [HttpPost]
-        public IActionResult Add(Pet newPet)
+        public IActionResult Add(Pet newPet)  //-> receives data from HTML form
         {
-            Pets.Add(newPet);
-            return View(nameof(Index), Pets);
+
+            if (ModelState.IsValid) //all required fields are completed
+            {
+                //we should be able to add new pet 
+                Pets.Add(newPet);
+                return View(nameof(Index), Pets);
+            }
+
+            return View("form", newPet);
 
 
         }
