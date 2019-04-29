@@ -51,6 +51,12 @@ namespace AppPrawject.WebUI.Controllers
             return View(nameof(Index), Pets);
         }
 
+        //pet/edit/1
+        public IActionResult Edit(int id) //get id from URL
+        {
+            var pet = Pets.Single(p => p.Id == id);
+            return View(pet);
+        }
 
 
     }

@@ -1,10 +1,27 @@
 ﻿@model Pet
+@* Same page for Add and Edit
+    Add -> Model is null
+    Edit -> Model is not null
+*@
 
-<h1>Add a pet</h1>
+
+@{
+
+
+    //Ternary operator
+
+    var action = Model == null ? "Add" : "Edit";
+}
 
 
 
-<form asp-action="add" asp-controller="pet" method="post">
+
+<h1>Add a new pet </h1>
+<h1>Edit a pet </h1>
+
+
+
+<form asp-action="action" asp-controller="pet" method="post">
     <div class="form-group">
         <label asp-for="Name"></label>
         <input class="form-control" asp-for="Name">
@@ -25,7 +42,7 @@
         <input class="form-control" asp-for="Image">
     </div>
 
-    <button type="submit" class="btn btn-primary">Add</button>
+    <button type="submit" class="btn btn-primary">action</button>
     <a class="btn btn-secodary" asp-action="index" asp-controller="pet">Cancel</a>
 
 
