@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AppPrawject.Domain
+namespace AppPrawject.Domain.Models
 {
     public class Pet
     {

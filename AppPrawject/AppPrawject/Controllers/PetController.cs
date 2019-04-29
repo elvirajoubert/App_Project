@@ -1,4 +1,4 @@
-﻿using AppPrawject.Domain;
+﻿using AppPrawject.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
