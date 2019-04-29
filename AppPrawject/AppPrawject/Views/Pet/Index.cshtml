@@ -3,6 +3,10 @@
 
 <h1>This is the list of Pets</h1>
 
+@if (Model.Count > 0)
+{
+    <a class="btn btn-secodary float-right" asp-controller="pet" asp-action="add">Add</a>
+}
 
 
 <table class="table">
@@ -42,10 +46,6 @@
     }
 
 
-    @if (Model.Count > 0)
-    {
-        <a class="btn btn-primary" asp-action="add" asp-controller="pet">Add</a>
-    }
 </table>
 
 

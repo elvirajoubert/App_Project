@@ -23,7 +23,7 @@ namespace AppPrawject.WebUI.Controllers
         //pet/add
         public IActionResult Add()
         {
-            return View();
+            return View("Form"); //-->Add.cshtml
         }
 
 
@@ -55,7 +55,7 @@ namespace AppPrawject.WebUI.Controllers
         public IActionResult Edit(int id) //get id from URL
         {
             var pet = Pets.Single(p => p.Id == id);
-            return View(pet);
+            return View("Form", pet);// Edit.cshtml, renamed to Form.cshtml
         }
 
 
