@@ -43,6 +43,14 @@ namespace AppPrawject.WebUI.Controllers
             return View(pet);
         }
 
+        public IActionResult Delete(int id)
+        {
+            var pet = Pets.Single(p => p.Id == id);
+            Pets.Remove(pet);
+
+            return View(nameof(Index), Pets);
+        }
+
 
 
     }
