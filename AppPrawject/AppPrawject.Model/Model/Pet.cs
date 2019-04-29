@@ -10,5 +10,7 @@
         public int Weight { get; set; }
 
         public string Image { get; set; }
+
+
     }
 }

@@ -1,7 +1,7 @@
-﻿
-@{
-    ViewData["Title"] = "Details";
-}
+﻿@model Pet
 
-<h1>Details</h1>
-
+<h1>@Model.Name</h1>
+<div>
+    <p>@Model.Breed</p>
+    <p>@Model.Image</p>
+</div>

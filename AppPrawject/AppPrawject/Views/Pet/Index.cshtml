@@ -11,6 +11,7 @@
         <th>Breed</th>
         <th>Weight</th>
         <th>Image</th>
+        <th></th>
     </tr>
 
 
@@ -33,6 +34,9 @@
             <td>@pet.Breed</td>
             <td>@pet.Weight</td>
             <td>@pet.Image</td>
+            <td>
+                <a asp-controller="pet" asp-action="detail">Detail</a>
+            </td>
 
         </tr>
     }
