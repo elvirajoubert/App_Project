@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AppPrawject.Models;
 using Microsoft.AspNetCore.Mvc;
-using AppPrawject.Models;
+using System.Diagnostics;
 
 namespace AppPrawject.Controllers
 {

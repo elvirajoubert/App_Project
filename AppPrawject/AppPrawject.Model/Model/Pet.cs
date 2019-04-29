@@ -6,7 +6,8 @@ namespace AppPrawject.Domain
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Don't forget to add Pet's name")]
+
         public string Name { get; set; }
 
         [Required]

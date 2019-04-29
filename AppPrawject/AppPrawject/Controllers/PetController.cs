@@ -69,13 +69,19 @@ namespace AppPrawject.WebUI.Controllers
         [HttpPost]
         public IActionResult Edit(Pet updatedPet)
         {
-            var oldPet = Pets.Single(p => p.Id == updatedPet.Id);
-            oldPet.Name = updatedPet.Name;
-            oldPet.Breed = updatedPet.Breed;
-            oldPet.Weight = updatedPet.Weight;
-            oldPet.Image = updatedPet.Image;
+            if (ModelState.IsValid)
+            {
+                var oldPet = Pets.Single(p => p.Id == updatedPet.Id);
+                oldPet.Name = updatedPet.Name;
+                oldPet.Breed = updatedPet.Breed;
+                oldPet.Weight = updatedPet.Weight;
+                oldPet.Image = updatedPet.Image;
 
-            return View(nameof(Index), Pets);
+                return View(nameof(Index), Pets);
+
+            }
+            return View("Form", updatedPet); //By passing updatedPet we trigger the logis for Edit Form.cshtml
+
         }
 
 
