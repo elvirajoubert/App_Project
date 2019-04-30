@@ -2,6 +2,7 @@
 using AppPrawject.Data.Interfaces;
 using AppPrawject.Domain.Models;
 using System;
+using System.Linq;
 
 namespace AppPrawject.Data.Implementation.SqlServer
 {
@@ -15,7 +16,8 @@ namespace AppPrawject.Data.Implementation.SqlServer
 
             {
                 //SQL -> Database look for table properties
-                context.Pets
+                var pet = context.Pets.Single(p => p.Id == id);
+                return pet;
             }
         }
         public Pet Create(Pet newPet)
