@@ -13,7 +13,7 @@ namespace AppPrawject.Data.Context
     {
         // Represents a collection (table) of a given entity/model
         // They map to tables by default
-        DbSet<Pet> Pets { get; set; }
+        public DbSet<Pet> Pets { get; set; }
 
         //Virtual medthod designed to be overridden
         // You can provide configuration information for the context
