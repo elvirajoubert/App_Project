@@ -18,7 +18,7 @@ namespace AppPrawject.Domain.Models
 
         public string Image { get; set; }
 
-        public string GeoLocation { get; set; }
+
 
 
     }

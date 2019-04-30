@@ -17,6 +17,6 @@ namespace AppPrawject.Data.Interfaces
 
 
         //Delete
-        bool Delete()
+        bool Delete(int id);
     }
 }
