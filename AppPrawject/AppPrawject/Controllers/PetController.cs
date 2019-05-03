@@ -1,4 +1,9 @@
-﻿namespace AppPrawject.WebUI.Controllers
+﻿using AppPrawject.Domain.Models;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace AppPrawject.WebUI.Controllers
 {
     public class PetController : Controller
     {

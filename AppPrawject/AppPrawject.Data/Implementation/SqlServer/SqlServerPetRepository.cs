@@ -22,7 +22,12 @@ namespace AppPrawject.Data.Implementation.SqlServer
         }
         public Pet Create(Pet newPet)
         {
-            throw new NotImplementedException();
+            using (var context = new AppPrawjectDbContext())
+            {
+                context.Pets.Add(newPet);
+                context.SaveChanges();
+                return newPet; //newPet.Id. will be populated with new DB value
+            }
         }
 
         public Pet Update(Pet updatedPet)
@@ -31,7 +36,34 @@ namespace AppPrawject.Data.Implementation.SqlServer
         }
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+
+            using (var context = new AppPrawjectDbContext())
+            {
+
+                //Find what we are going to delete
+                var petToBeDeleted = GetById(id);
+
+                //delete
+                context.Pets.Remove(petToBeDeleted);
+
+
+                //save changes
+                context.SaveChanges();
+
+                //check if entity/model exist
+                if (GetById(id) == null)
+                {
+                    return true;
+                }
+                return false;
+
+            }
+
+
+
+
+
+
         }
 
 
