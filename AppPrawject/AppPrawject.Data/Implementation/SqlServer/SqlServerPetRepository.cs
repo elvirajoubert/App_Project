@@ -1,7 +1,6 @@
 ﻿using AppPrawject.Data.Context;
 using AppPrawject.Data.Interfaces;
 using AppPrawject.Domain.Models;
-using System;
 using System.Linq;
 
 namespace AppPrawject.Data.Implementation.SqlServer
@@ -32,7 +31,20 @@ namespace AppPrawject.Data.Implementation.SqlServer
 
         public Pet Update(Pet updatedPet)
         {
-            throw new NotImplementedException();
+            using (var context = new AppPrawjectDbContext())
+            {
+                //find the old entry
+                var oldPet = GetById(updatedPet.Id);
+
+                // update each entity properties / get; set;
+
+                context.Entry(oldPet).CurrentValues.SetValues(updatedPet);
+
+                // save changes
+                context.SaveChanges();
+
+                return oldPet; // To ensure that the Save happened
+            }
         }
         public bool Delete(int id)
         {

@@ -1,5 +1,7 @@
 ﻿using AppPrawject.Domain.Models;
+using AppPrawject.Service.Services;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,17 +9,24 @@ namespace AppPrawject.WebUI.Controllers
 {
     public class PetController : Controller
     {
+        private readonly IPetService _petService;
 
-        private List<Pet> Pets = new List<Pet>
+        public PetController(IPetService petService)
+
         {
-            new Pet { Id = 1, Name="Molly", Breed ="Border Collie", Weight= 40 },
-            new Pet { Id = 2, Name="Holly", Breed ="Beagle", Weight= 35}
-        };
+            _petService = petService;
+        }
 
         //GET pet/index
         public IActionResult Index()
         {
-            return View(Pets);
+            var pets = _petService.GetAll
+            return View();
+        }
+
+        private IActionResult View(object pets)
+        {
+            throw new NotImplementedException();
         }
 
         //pet/add

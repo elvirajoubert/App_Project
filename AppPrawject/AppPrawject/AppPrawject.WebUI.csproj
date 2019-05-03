@@ -16,6 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\AppPrawject.Data\AppPrawject.Data.csproj" />
     <ProjectReference Include="..\AppPrawject.Model\AppPrawject.Domain.csproj" />
+    <ProjectReference Include="..\AppPrawject.Service\AppPrawject.Service.csproj" />
   </ItemGroup>
 
 </Project>

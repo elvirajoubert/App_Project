@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppPrawject.Domain", "AppPr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppPrawject.Data", "AppPrawject.Data\AppPrawject.Data.csproj", "{4B07548A-39E3-407C-A4E6-1CDB4718B6EF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppPrawject.Service", "AppPrawject.Service\AppPrawject.Service.csproj", "{CB081901-1BB1-4322-8E98-E09CA9708811}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{4B07548A-39E3-407C-A4E6-1CDB4718B6EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B07548A-39E3-407C-A4E6-1CDB4718B6EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B07548A-39E3-407C-A4E6-1CDB4718B6EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB081901-1BB1-4322-8E98-E09CA9708811}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB081901-1BB1-4322-8E98-E09CA9708811}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB081901-1BB1-4322-8E98-E09CA9708811}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB081901-1BB1-4322-8E98-E09CA9708811}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
