@@ -1,10 +1,4 @@
-﻿using AppPrawject.Domain.Models;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Linq;
-
-
-namespace AppPrawject.WebUI.Controllers
+﻿namespace AppPrawject.WebUI.Controllers
 {
     public class PetController : Controller
     {
@@ -80,7 +74,7 @@ namespace AppPrawject.WebUI.Controllers
                 return View(nameof(Index), Pets);
 
             }
-            return View("Form", updatedPet); //By passing updatedPet we trigger the logis for Edit Form.cshtml
+            return View("Form", updatedPet); //By passing updatedPet we trigger the logic for Edit Form.cshtml
 
         }
 
