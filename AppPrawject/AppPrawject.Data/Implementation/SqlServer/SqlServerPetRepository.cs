@@ -1,6 +1,7 @@
 ﻿using AppPrawject.Data.Context;
 using AppPrawject.Data.Interfaces;
 using AppPrawject.Domain.Models;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace AppPrawject.Data.Implementation.SqlServer
@@ -19,6 +20,16 @@ namespace AppPrawject.Data.Implementation.SqlServer
                 return pet;
             }
         }
+
+        public ICollection<Pet> GetAllPets()
+        {
+            using (var context = new AppPrawjectDbContext())
+            {
+                //DBSet != ICollection
+                return context.Pets.ToList(); //Now it is ICollection
+            }
+        }
+
         public Pet Create(Pet newPet)
         {
             using (var context = new AppPrawjectDbContext())
@@ -33,11 +44,11 @@ namespace AppPrawject.Data.Implementation.SqlServer
         {
             using (var context = new AppPrawjectDbContext())
             {
-                //find the old entry
+
+                //find the old entity
                 var oldPet = GetById(updatedPet.Id);
 
-                // update each entity properties / get; set;
-
+                // update each entity properties -->/ get; set;
                 context.Entry(oldPet).CurrentValues.SetValues(updatedPet);
 
                 // save changes
@@ -77,8 +88,6 @@ namespace AppPrawject.Data.Implementation.SqlServer
 
 
         }
-
-
 
 
     }

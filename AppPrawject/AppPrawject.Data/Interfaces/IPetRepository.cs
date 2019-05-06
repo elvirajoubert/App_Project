@@ -1,4 +1,5 @@
 ﻿using AppPrawject.Domain.Models;
+using System.Collections.Generic;
 
 namespace AppPrawject.Data.Interfaces
 {
@@ -6,7 +7,7 @@ namespace AppPrawject.Data.Interfaces
     {
         //Read
         Pet GetById(int id);
-        //IColletion<Pet> GetByOwnerId(int ownerId);
+        ICollection<Pet> GetAllPets();
 
         //Create
         Pet Create(Pet newPet);
