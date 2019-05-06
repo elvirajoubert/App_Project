@@ -13,7 +13,7 @@
     var action = Model == null ? "Add" : "Edit";
 }
 
-@if (action == "Add")
+@if (action == "Add more")
 {
     <h1>Add a new pet </h1>
 }
@@ -26,24 +26,24 @@ else
 
 
 
-
-
-
 <form asp-action="@action" asp-controller="pet" method="post">
-    <div asp-validation-summary="All"></div>
+    @*<div asp-validation-summary="All"></div>*@
     <div class="form-group">
         <label asp-for="Name"></label>
         <input class="form-control" asp-for="Name">
+        <span asp-validation-for="Name"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="Breed"></label>
         <input class="form-control" asp-for="Breed">
+        <span asp-validation-for="Breed"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="Weight"></label>
         <input class="form-control" asp-for="Weight">
+        <span asp-validation-for="Weight"></span>
     </div>
 
     <div class="form-group">
@@ -51,7 +51,7 @@ else
         <input class="form-control" asp-for="Image">
     </div>
 
-    <button type="submit" class="btn btn-primary">action</button>
+    <button type="submit" class="btn btn-primary">@action</button>
     <a class="btn btn-secodary" asp-action="index" asp-controller="pet">Cancel</a>
 
 

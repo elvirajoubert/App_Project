@@ -1,12 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AppPrawject.Domain
+namespace AppPrawject.Domain.Models
 {
     public class Pet
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Don't forget to add Pet's name")]
+
         public string Name { get; set; }
 
         [Required]
@@ -16,6 +17,8 @@ namespace AppPrawject.Domain
         public int Weight { get; set; }
 
         public string Image { get; set; }
+
+
 
 
     }
