@@ -51,8 +51,6 @@ namespace AppPrawject.WebUI.Controllers
         public IActionResult Detail(int id) //get id from URL
         {
             var pet = _petService.GetById(id);
-
-
             return View(pet);
         }
 
@@ -67,32 +65,32 @@ namespace AppPrawject.WebUI.Controllers
 
             }
         }
-    }
 
+
+
+
+        //pet/edit/1
+        public IActionResult Edit(int id) //get id from URL
+        {
+            var pet = _petService.GetById(id);
+            return View("Form", pet);// Edit.cshtml, renamed to Form.cshtml
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Pet updatedPet)
+        {
+            if (ModelState.IsValid)
+            {
+                _petService.Update(updatedPet);
+                return RedirectToAction(nameof(Index));
+
+            }
+            return View("Form", updatedPet); //By passing updatedPet we trigger the logic for Edit Form.cshtml
+
+        }
+    }
 }
 
-//        //pet/edit/1
-//        public IActionResult Edit(int id) //get id from URL
-//        {
-//            var pet = Pets.Single(p => p.Id == id);
-//            return View("Form", pet);// Edit.cshtml, renamed to Form.cshtml
-//        }
-
-//        [HttpPost]
-//        public IActionResult Edit(Pet updatedPet)
-//        {
-//            if (ModelState.IsValid)
-//            {
-//                var oldPet = Pets.Single(p => p.Id == updatedPet.Id);
-//                oldPet.Name = updatedPet.Name;
-//                oldPet.Breed = updatedPet.Breed;
-//                oldPet.Weight = updatedPet.Weight;
-//                oldPet.Image = updatedPet.Image;
-
-//                return View(nameof(Index), Pets);
-
-//            }
-//            return View("Form", updatedPet); //By passing updatedPet we trigger the logic for Edit Form.cshtml
 
 
 

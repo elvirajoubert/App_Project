@@ -53,6 +53,7 @@ namespace AppPrawject.Data.Implementation.SqlServer
                 context.Entry(oldPet).CurrentValues.SetValues(updatedPet);
 
                 // save changes
+                context.Pets.Update(oldPet);
                 context.SaveChanges();
 
                 return oldPet; // To ensure that the Save happened
