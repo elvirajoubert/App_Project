@@ -29,12 +29,26 @@ namespace AppPrawject
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            AddServiceImplementation(services);
+
+            AddRepositoryImplementation(services);
+
+
             //Match the Interface with implementation wherever we have dependency in a constructor
-            services.AddSingleton<IPetService, PetService>();
-            services.AddSingleton<IPetRepository, SqlServerPetRepository>();
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+        }
+
+
+        private void AddRepositoryImplementation(IServiceCollection services)
+        {
+            services.AddSingleton<IPetRepository, SqlServerPetRepository>();
+        }
+
+        private void AddServiceImplementation(IServiceCollection services)
+        {
+            services.AddSingleton<IPetService, PetService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

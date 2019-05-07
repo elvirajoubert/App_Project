@@ -16,7 +16,8 @@ namespace AppPrawject.Data.Implementation.SqlServer
 
             {
                 //SQL -> Database look for table properties
-                var pet = context.Pets.Single(p => p.Id == id);
+                //if not found returns null vlue - rather than an exception
+                var pet = context.Pets.SingleOrDefault(p => p.Id == id);
                 return pet;
             }
         }

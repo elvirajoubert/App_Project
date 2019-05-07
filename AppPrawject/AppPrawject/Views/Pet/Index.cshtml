@@ -1,7 +1,16 @@
 ﻿@* Model definition is done here*@
 @model List<Pet>
 
-<h1>This is the list of Pets</h1>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @ViewBag.Error
+    </div>
+}
+
+
+<h1>This is your list of Pets</h1>
 
 @if (Model.Count > 0)
 {
@@ -40,7 +49,7 @@
             <td>@pet.Image</td>
             <td>
                 <a asp-controller="pet" asp-action="detail" asp-route-id="@pet.Id">Detail</a> |
-                <a asp-controller="pet" asp-action="edit" asp-route-id="@pet.Id">Edit</a>
+                <a asp-controller="pet" asp-action="edit" asp-route-id="@pet.Id">Edit</a> |
                 <a href="#" class="js-open-modal" data-pet-id="@pet.Id">Delete</a>
 
         </tr>

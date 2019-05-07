@@ -1,4 +1,5 @@
-﻿using AppPrawject.Service.Services;
+﻿using AppPrawject.Domain.Models;
+using AppPrawject.Service.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AppPrawject.WebUI.Controllers
@@ -13,57 +14,62 @@ namespace AppPrawject.WebUI.Controllers
             _petService = petService;
         }
 
-        //GET pet/index
+        // pet/index
         public IActionResult Index()
         {
             var pets = _petService.GetAllPets();
             return View(pets);
         }
+
+
+
+        public IActionResult Add()
+        {
+            return View("Form"); //-->Add.cshtml renamed to Form.cshtml
+        }
+
+
+
+        [HttpPost]
+        public IActionResult Add(Pet newPet)  //-> receives data from HTML form
+        {
+
+            if (ModelState.IsValid) //all required fields are completed
+            {
+                //we should be able to add new pet 
+                _petService.Create(newPet);
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View("form");
+
+        }
+
+
+
+
+        public IActionResult Detail(int id) //get id from URL
+        {
+            var pet = _petService.GetById(id);
+
+
+            return View(pet);
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var succeeded = _petService.Delete(id);
+
+            if (!succeeded)//when delete fails
+                ViewBag.Error = "Oops, something went wrong, this pet cannot be deleted.Try again later";
+            {
+                return RedirectToAction(nameof(Index));
+
+            }
+        }
     }
+
 }
-
-//        private IActionResult View(object pets)
-//        {
-//            throw new NotImplementedException();
-//        }
-
-//        //pet/add
-//        public IActionResult Add()
-//        {
-//            return View("Form"); //-->Add.cshtml renamed to Form.cshtml
-//        }
-
-
-//        [HttpPost]
-//        public IActionResult Add(Pet newPet)  //-> receives data from HTML form
-//        {
-
-//            if (ModelState.IsValid) //all required fields are completed
-//            {
-//                //we should be able to add new pet 
-//                Pets.Add(newPet);
-//                return View(nameof(Index), Pets);
-//            }
-
-//            return View("form");
-
-
-//        }
-
-//        public IActionResult Detail(int id) //get id from URL
-//        {
-//            var pet = Pets.Single(p => p.Id == id);
-
-//            return View(pet);
-//        }
-
-//        public IActionResult Delete(int id)
-//        {
-//            var pet = Pets.Single(p => p.Id == id);
-//            Pets.Remove(pet);
-
-//            return View(nameof(Index), Pets);
-//        }
 
 //        //pet/edit/1
 //        public IActionResult Edit(int id) //get id from URL
@@ -88,9 +94,8 @@ namespace AppPrawject.WebUI.Controllers
 //            }
 //            return View("Form", updatedPet); //By passing updatedPet we trigger the logic for Edit Form.cshtml
 
-//        }
 
 
-//    }
-//}
+
+
 
