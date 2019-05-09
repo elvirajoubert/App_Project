@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using AppPrawject.Domain.Model;
+using System.ComponentModel.DataAnnotations;
 
 namespace AppPrawject.Domain.Models
 {
@@ -17,6 +18,11 @@ namespace AppPrawject.Domain.Models
         public int Weight { get; set; }
 
         public string Image { get; set; }
+
+        // Fully Defined Relationship
+        public int PetBreedId { get; set; }
+        public PetBreed PetBreed { get; set; }
+
 
 
 
