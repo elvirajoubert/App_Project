@@ -1,10 +1,31 @@
-﻿using System;
+﻿using AppPrawject.Data.Context;
+using AppPrawject.Data.Interfaces;
+using AppPrawject.Domain.Model;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace AppPrawject.Data.Implementation.SqlServer
 {
-    class SqlServerPetBreedRepository
+    public class SqlServerPetBreedRepository : IPetBreedRepository
     {
+        public ICollection<PetBreed> GetAll()
+        {
+            using (var context = new AppPrawjectDbContext())
+            {
+                return context.PetBreeds.ToList();
+            }
+        }
+
+        public PetBreed GetById(int id)
+        {
+            using (var context = new AppPrawjectDbContext())
+            {
+
+                var petBreed = context.PetBreeds.SingleOrDefault(pt => pt.Id == id);
+                return petBreed;
+            }
+        }
     }
 }
