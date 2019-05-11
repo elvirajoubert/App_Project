@@ -1,7 +1,5 @@
 ﻿using AppPrawject.Domain.Model;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace AppPrawject.Data.Interfaces
 {
@@ -9,8 +7,8 @@ namespace AppPrawject.Data.Interfaces
 
     {
         //Read
-
         IPetBreed GetById(int id);
+
         ICollection<PetBreed> GetAll();
     }
 }
