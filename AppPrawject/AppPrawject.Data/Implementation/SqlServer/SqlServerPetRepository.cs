@@ -16,7 +16,8 @@ namespace AppPrawject.Data.Implementation.SqlServer
 
             {
                 //SQL -> Database look for table properties
-                var pet = context.Pets.Single(p => p.Id == id);
+                //if not found returns null vlue - rather than an exception
+                var pet = context.Pets.SingleOrDefault(p => p.Id == id);
                 return pet;
             }
         }
@@ -52,6 +53,7 @@ namespace AppPrawject.Data.Implementation.SqlServer
                 context.Entry(oldPet).CurrentValues.SetValues(updatedPet);
 
                 // save changes
+                context.Pets.Update(oldPet);
                 context.SaveChanges();
 
                 return oldPet; // To ensure that the Save happened

@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Compile Remove="Migrations\20190430003746_added-geo-location.cs" />
+    <Compile Remove="Migrations\20190509010535_add-pet-breed-relationship.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -14,6 +15,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AppPrawject.Model\AppPrawject.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Diagram map\" />
   </ItemGroup>
 
 </Project>
