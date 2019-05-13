@@ -4,7 +4,6 @@ using AppPrawject.Domain.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace AppPrawject.Data.Implementation.SqlServer
 {
@@ -26,6 +25,11 @@ namespace AppPrawject.Data.Implementation.SqlServer
                 var petBreed = context.PetBreeds.SingleOrDefault(pt => pt.Id == id);
                 return petBreed;
             }
+        }
+
+        IPetBreed IPetBreedRepository.GetById(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
