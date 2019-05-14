@@ -14,7 +14,7 @@ namespace AppPrawject.Service.Services
         ICollection<PetBreed> GetAll();
     }
 
-    public class PetBreedService : IPetBreedService
+    public class PetBreedService : petBreedService
 
     {
         private readonly IPetBreedRepository _petBreedRepository;

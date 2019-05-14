@@ -1,4 +1,4 @@
-﻿using AppPrawject.Models;
+﻿using AppPrawject.Model;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 

@@ -1,17 +1,21 @@
-﻿using AppPrawject.Domain.Models;
+﻿using AppPrawject.Domain.Model;
 using AppPrawject.Service.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AppPrawject.WebUI.Controllers
 {
     public class PetController : Controller
-    {
-        private readonly IPetService _petService;
 
-        public PetController(IPetService petService)
+    {
+        private const string PETBREEDS = "PetBreeds";
+        private readonly IPetService _petService;
+        private readonly petBreedService _petBreedService;
+
+        public PetController(IPetService petService, petBreedService petBreedService)
 
         {
             _petService = petService;
+            _petBreedService = petBreedService;
         }
 
         // pet/index
@@ -32,6 +36,9 @@ namespace AppPrawject.WebUI.Controllers
 
         public IActionResult Add()
         {
+            var petBreeds = _petBreedService.GetAll();
+            ViewData.Add("PETBREEDS", petBreeds);
+
             return View("Form"); //-->Add.cshtml renamed to Form.cshtml
         }
 

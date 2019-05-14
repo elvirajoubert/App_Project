@@ -1,13 +1,12 @@
-﻿using AppPrawject.Domain.Model;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace AppPrawject.Domain.Models
+namespace AppPrawject.Domain.Model
 {
     public class Pet
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Don't forget to add Pet's name")]
+        [Required(ErrorMessage = "Don't forget to add your Pet's name")]
 
         public string Name { get; set; }
 

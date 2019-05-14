@@ -1,6 +1,6 @@
 ﻿namespace AppPrawject.Service.Services
 {
-    public interface IPetBreedService
+    public interface petBreedService
     {
     }
 }

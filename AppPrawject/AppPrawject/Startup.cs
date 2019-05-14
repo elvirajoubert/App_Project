@@ -50,6 +50,7 @@ namespace AppPrawject
         private void AddServiceImplementation(IServiceCollection services)
         {
             services.AddSingleton<IPetService, PetService>();
+            services.AddSingleton<IPetBreedService, PetBreedService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
