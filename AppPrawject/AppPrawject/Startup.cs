@@ -44,6 +44,7 @@ namespace AppPrawject
         private void AddRepositoryImplementation(IServiceCollection services)
         {
             services.AddSingleton<IPetRepository, SqlServerPetRepository>();
+            services.AddSingleton<IPetBreedRepository, SqlServerPetBreedRepository>();
         }
 
         private void AddServiceImplementation(IServiceCollection services)

@@ -7,7 +7,7 @@ namespace AppPrawject.Data.Interfaces
 
     {
         //Read
-        IPetBreed GetById(int id);
+        PetBreed GetById(int id);
 
         ICollection<PetBreed> GetAll();
     }

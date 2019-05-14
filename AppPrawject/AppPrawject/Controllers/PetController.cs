@@ -17,6 +17,13 @@ namespace AppPrawject.WebUI.Controllers
         // pet/index
         public IActionResult Index()
         {
+            //check if we got any error in TempData
+            if (TempData["Error"] != null)
+            {
+                //Pass that error to the ViewData, because we are communicating b/n Action and View
+                ViewData.Add("Error", TempData["Error"]);
+            }
+
             var pets = _petService.GetAllPets();
             return View(pets);
         }
@@ -58,12 +65,14 @@ namespace AppPrawject.WebUI.Controllers
         {
             var succeeded = _petService.Delete(id);
 
-            if (!succeeded)//when delete fails
-                ViewBag.Error = "Oops, something went wrong, this pet cannot be deleted.Try again later";
-            {
-                return RedirectToAction(nameof(Index));
+            if (!succeeded)//when delete 
+                //Using tempdata = because we are communicating
+                //between actions - from Delete to Index
+                TempData.Add("Error", "Oops, something went wrong, this pet cannot be deleted.Try again later");
 
-            }
+            return RedirectToAction(nameof(Index));
+
+
         }
 
 

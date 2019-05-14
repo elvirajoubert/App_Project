@@ -2,10 +2,10 @@
 @model List<Pet>
 
 
-@if (ViewBag.Error != null)
+@if (ViewData["Error"] != null)
 {
     <div class="alert alert-danger" role="alert">
-        @ViewBag.Error
+        @ViewData["Error"]
     </div>
 }
 
