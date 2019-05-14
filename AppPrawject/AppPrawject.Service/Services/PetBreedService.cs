@@ -6,7 +6,7 @@ namespace AppPrawject.Service.Services
 {
 
 
-    public interface IPetBreed
+    public interface IPetBreedService
     {
         //Read
         PetBreed GetById(int id);
@@ -14,7 +14,7 @@ namespace AppPrawject.Service.Services
         ICollection<PetBreed> GetAll();
     }
 
-    public class PetBreedService : petBreedService
+    public class PetBreedService : IPetBreedService
 
     {
         private readonly IPetBreedRepository _petBreedRepository;

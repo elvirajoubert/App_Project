@@ -9,9 +9,9 @@ namespace AppPrawject.WebUI.Controllers
     {
         private const string PETBREEDS = "PetBreeds";
         private readonly IPetService _petService;
-        private readonly petBreedService _petBreedService;
+        private readonly IPetBreedService _petBreedService;
 
-        public PetController(IPetService petService, petBreedService petBreedService)
+        public PetController(IPetService petService, IPetBreedService petBreedService)
 
         {
             _petService = petService;

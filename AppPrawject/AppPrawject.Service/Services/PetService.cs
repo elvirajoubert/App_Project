@@ -1,5 +1,5 @@
 ﻿using AppPrawject.Data.Interfaces;
-using AppPrawject.Domain.Models;
+using AppPrawject.Domain.Model;
 using System.Collections.Generic;
 
 namespace AppPrawject.Service.Services
