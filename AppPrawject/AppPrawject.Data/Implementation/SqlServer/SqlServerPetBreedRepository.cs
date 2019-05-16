@@ -1,7 +1,6 @@
 ﻿using AppPrawject.Data.Context;
 using AppPrawject.Data.Interfaces;
 using AppPrawject.Domain.Model;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -27,9 +26,6 @@ namespace AppPrawject.Data.Implementation.SqlServer
             }
         }
 
-        IPetBreed IPetBreedRepository.GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }

@@ -2,10 +2,10 @@
 @model List<Pet>
 
 
-@if (ViewBag.Error != null)
+@if (ViewData["Error"] != null)
 {
     <div class="alert alert-danger" role="alert">
-        @ViewBag.Error
+        @ViewData["Error"]
     </div>
 }
 
@@ -21,7 +21,6 @@
 <table class="table">
     <tr>
         <th>Name</th>
-        <th>Breed</th>
         <th>Weight</th>
         <th>Image</th>
         <th></th>
@@ -44,7 +43,6 @@
     {
         <tr>
             <td>@pet.Name</td>
-            <td>@pet.Breed</td>
             <td>@pet.Weight</td>
             <td>@pet.Image</td>
             <td>

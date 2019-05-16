@@ -1,4 +1,4 @@
-﻿using AppPrawject.Domain.Models;
+﻿using AppPrawject.Domain.Model;
 using System.Collections.Generic;
 
 namespace AppPrawject.Data.Interfaces

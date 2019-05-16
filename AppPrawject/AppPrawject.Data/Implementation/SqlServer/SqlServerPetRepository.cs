@@ -1,6 +1,6 @@
 ﻿using AppPrawject.Data.Context;
 using AppPrawject.Data.Interfaces;
-using AppPrawject.Domain.Models;
+using AppPrawject.Domain.Model;
 using System.Collections.Generic;
 using System.Linq;
 

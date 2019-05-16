@@ -1,5 +1,4 @@
 ﻿using AppPrawject.Domain.Model;
-using AppPrawject.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace AppPrawject.Data.Context
@@ -47,13 +46,12 @@ namespace AppPrawject.Data.Context
                 new PetBreed { Id = 14, Description = "Rottweiler" },
                 new PetBreed { Id = 15, Description = "Yorkshire Terrier" },
                 new PetBreed { Id = 16, Description = "Golden Retriever" },
-                new PetBreed { Id = 16, Description = "Boxer" },
-                new PetBreed { Id = 17, Description = "Australian Shepherd" },
-                new PetBreed { Id = 18, Description = "Bichon Frise" },
-                new PetBreed { Id = 19, Description = "Chow Chow" },
-                new PetBreed { Id = 20, Description = "Pointer" },
-                new PetBreed { Id = 21, Description = "Dachshund" },
-                new PetBreed { Id = 22, Description = "Shih Tzu" },
+                new PetBreed { Id = 17, Description = "Boxer" },
+                new PetBreed { Id = 18, Description = "Australian Shepherd" },
+                new PetBreed { Id = 19, Description = "Bichon Frise" },
+                new PetBreed { Id = 20, Description = "Chow Chow" },
+                new PetBreed { Id = 21, Description = "Pointer" },
+                new PetBreed { Id = 22, Description = "Dachshund" },
                 new PetBreed { Id = 23, Description = "Pomeranian" },
                 new PetBreed { Id = 24, Description = "Pembroke Welsh Corgi" },
                 new PetBreed { Id = 25, Description = "Bernese Mountain Dog" },
@@ -71,8 +69,8 @@ namespace AppPrawject.Data.Context
                 new PetBreed { Id = 37, Description = "Doberman" },
                 new PetBreed { Id = 38, Description = "Bullterrier" },
                 new PetBreed { Id = 39, Description = "English Mastiff" },
-                new PetBreed { Id = 40, Description = "Pitbull" },
-                new PetBreed { Id = 41, Description = "Irish Wolfhound" }
+                new PetBreed { Id = 40, Description = "Pitbull" }
+
                 );
 
 

@@ -11,18 +11,20 @@
     //Ternary operator
 
     var action = Model == null ? "Add" : "Edit";
-}
 
-@if (action == "Add more")
-{
-    <h1>Add a new pet </h1>
-}
-else
-{
-    <h1>Edit a pet </h1>
-}
+    var petBreeds = ViewData["PetBreeds"] as ICollection<PetBreed>; //ICollection<PetBreed>
+    IEnumerable<SelectListItem> petItems = new SelectList(petBreeds, "Id", "Description");
 
+    @if (action == "Add more")
+    {
+        <h1>Add a new pet </h1>
+    }
+    else
+    {
+        <h1>Edit a pet </h1>
+    }
 
+}
 
 
 
@@ -34,11 +36,6 @@ else
         <span asp-validation-for="Name"></span>
     </div>
 
-    <div class="form-group">
-        <label asp-for="Breed"></label>
-        <input class="form-control" asp-for="Breed">
-        <span asp-validation-for="Breed"></span>
-    </div>
 
     <div class="form-group">
         <label asp-for="Weight"></label>
@@ -51,6 +48,10 @@ else
         <input class="form-control" asp-for="Image">
     </div>
 
+    <div class="form-group">
+        <label asp-for="PetBreedId"></label>
+        <select class="form-control" asp-for="PetBreedId" asp-items="@petItems"></select>
+    </div>
     <button type="submit" class="btn btn-primary">@action</button>
     <a class="btn btn-secodary" asp-action="index" asp-controller="pet">Cancel</a>
 
