@@ -33,11 +33,10 @@ namespace AppPrawject.WebUI.Controllers
         }
 
 
-
+        [HttpGet]
         public IActionResult Add()
         {
-            var petBreeds = _petBreedService.GetAll();
-            ViewData.Add("PETBREEDS", petBreeds);
+            GetPetBreeds();
 
             return View("Form"); //-->Add.cshtml renamed to Form.cshtml
         }
@@ -52,9 +51,10 @@ namespace AppPrawject.WebUI.Controllers
             {
                 //we should be able to add new pet 
                 _petService.Create(newPet);
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index)); // -> Index();
             }
 
+            GetPetBreeds();
             return View("form");
 
         }
@@ -103,6 +103,13 @@ namespace AppPrawject.WebUI.Controllers
             }
             return View("Form", updatedPet); //By passing updatedPet we trigger the logic for Edit Form.cshtml
 
+        }
+
+        private void GetPetBreeds()
+        {
+
+            var petBreeds = _petBreedService.GetAll();
+            ViewData.Add("PETBREEDS", petBreeds);
         }
     }
 }

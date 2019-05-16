@@ -11,14 +11,13 @@ namespace AppPrawject.Domain.Model
         public string Name { get; set; }
 
         [Required]
-        public string Breed { get; set; }
-
-        [Required]
         public int Weight { get; set; }
 
         public string Image { get; set; }
 
         // Fully Defined Relationship
+
+        [Display(Name = "Pet Breed")]
         public int PetBreedId { get; set; }
         public PetBreed PetBreed { get; set; }
 
