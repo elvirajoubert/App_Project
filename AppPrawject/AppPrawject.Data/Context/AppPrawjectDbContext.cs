@@ -1,4 +1,5 @@
 ﻿using AppPrawject.Domain.Model;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace AppPrawject.Data.Context
@@ -9,7 +10,7 @@ namespace AppPrawject.Data.Context
 
     // DbContext -> represent a session to a db APIs
     // to communicate with db
-    public class AppPrawjectDbContext : DbContext
+    public class AppPrawjectDbContext : IdentityDbContext<AppUser>
     {
         // Represents a collection (table) of a given entity/model
         // They map to tables by default
@@ -29,6 +30,10 @@ namespace AppPrawject.Data.Context
         //We can manipulate Models, Add Data to tables, change default relationships
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            //base = IdentityDbContext
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<PetBreed>().HasData(
                 new PetBreed { Id = 1, Description = "Labrador" },
                 new PetBreed { Id = 2, Description = "Chihuahua" },

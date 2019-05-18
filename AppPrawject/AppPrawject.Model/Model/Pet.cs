@@ -15,14 +15,15 @@ namespace AppPrawject.Domain.Model
 
         public string Image { get; set; }
 
-        // Fully Defined Relationship
+        // Fully Defined Relationship for PetBreed
 
         [Display(Name = "Pet Breed")]
         public int PetBreedId { get; set; }
         public PetBreed PetBreed { get; set; }
 
-
-
+        //Fully Defined Relationship for AppUser
+        public string AppUserId { get; set; }
+        public AppUser Admin { get; set; }
 
 
     }
