@@ -1,9 +1,12 @@
-﻿using AppPrawject.Data.Implementation.SqlServer;
+﻿using AppPrawject.Data.Context;
+using AppPrawject.Data.Implementation.SqlServer;
 using AppPrawject.Data.Interfaces;
+using AppPrawject.Domain.Model;
 using AppPrawject.Service.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,8 +32,16 @@ namespace AppPrawject
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            AddServiceImplementation(services);
 
+            //Add DbContext as a Service
+            services.AddDbContext<AppPrawjectDbContext>();
+
+
+
+            //Add Identity as a Service
+            services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<AppPrawjectDbContext>();
+
+            AddServiceImplementation(services);
             AddRepositoryImplementation(services);
 
 
