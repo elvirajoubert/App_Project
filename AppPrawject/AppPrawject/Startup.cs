@@ -38,7 +38,7 @@ namespace AppPrawject
 
 
 
-            //Add Identity as a Service
+            //Adding Identity as a Service
             services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<AppPrawjectDbContext>();
 
             AddServiceImplementation(services);
