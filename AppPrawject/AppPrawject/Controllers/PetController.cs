@@ -55,7 +55,7 @@ namespace AppPrawject.WebUI.Controllers
             }
 
             GetPetBreeds();
-            return View("form");
+            return View("Form");
 
         }
 
