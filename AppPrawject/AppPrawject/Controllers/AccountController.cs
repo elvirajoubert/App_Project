@@ -32,7 +32,7 @@ namespace AppPrawject.WebUI.Controllers
 
         [HttpPost]
 
-        public async Task<IActionResult> Register(RegisterViewModel vm)
+        public async Task<IActionResult> Register(RegisterViewModel vm)  //vm=ViewModel
 
         {
             //register user
