@@ -1,5 +1,5 @@
 ﻿using AppPrawject.Domain.Model;
-using AppPrawject.WebUI.Models;
+using AppPrawject.Model;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -23,10 +23,7 @@ namespace AppPrawject.WebUI.Controllers
         [HttpGet]
         public IActionResult Register()
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            RedirectUserWhenAlreadyLoggedIn();
             return View();
         }
 
@@ -77,5 +74,56 @@ namespace AppPrawject.WebUI.Controllers
             return View(vm);
         }
 
+        [HttpGet]
+        public IActionResult Login()
+        {
+            RedirectUserWhenAlreadyLoggedIn();
+
+            return View();
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginViewModel vm)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _signInManager.PasswordSignInAsync(vm.Email, vm.Password, vm.RememberMe, false);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+
+                else
+                {
+                    ModelState.AddModelError("", "Email or Password incorrect");
+                }
+            }
+
+            return View(vm);
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+
+            return RedirectToAction("Index", "Home");
+        }
+
+
+
+        private IActionResult RedirectUserWhenAlreadyLoggedIn()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return null;
+        }
+
+
     }
+
+
 }
