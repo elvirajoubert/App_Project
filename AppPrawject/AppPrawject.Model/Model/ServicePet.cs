@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace AppPrawject.Domain.Model
+﻿namespace AppPrawject.Domain.Model
 {
-    class ServicePet
+    public class ServicePet
+
     {
+        public double Payment { get; set; }
+        public string PetId { get; set; }
+        public string ServiceId { get; set; }
     }
 }
