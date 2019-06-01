@@ -16,6 +16,8 @@ namespace AppPrawject.Data.Context
         // They map to tables by default
         public DbSet<Pet> Pets { get; set; }
         public DbSet<PetBreed> PetBreeds { get; set; }
+        public DbSet<Services> Services { get; set; }
+        //public DbSet<ServiceType> ServiceTypes {get; set;}
 
         //Virtual medthod designed to be overridden
         // You can provide configuration information for the context
@@ -78,6 +80,32 @@ namespace AppPrawject.Data.Context
 
                 );
 
+
+            modelBuilder.Entity<Services>().HasData(
+                new Services { Id = 1, UserId = "1", ServiceType = "Boarding" },
+                new Services { Id = 2, UserId = "2", ServiceType = "Grooming" },
+                new Services { Id = 3, UserId = "3", ServiceType = "Both" });
+
+
+            //Adding Services as the intermediate table b/n Pet and AppUser
+            //add seeding with service type - 3 options
+
+
+
+            //Adding ServicePet as a table in between Service and AppUser
+            modelBuilder.Entity<Services>()
+                 .HasKey(s => new { s.PetBreedId, s.UserId }); //Combined PK
+
+            modelBuilder.Entity<Services>() //Account Holder is an AppUser
+                .HasOne(s => s.User)
+                .WithMany(a => a.Services)
+                .HasForeignKey(s => s.UserId);
+
+
+            modelBuilder.Entity<Services>()
+                .HasOne(s => s.Pet)
+                .WithMany(p => p.Services)
+                .HasForeignKey(s => s.PetBreedId);
 
         }
     }

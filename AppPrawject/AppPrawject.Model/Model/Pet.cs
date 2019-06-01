@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace AppPrawject.Domain.Model
 {
@@ -25,6 +26,7 @@ namespace AppPrawject.Domain.Model
         public string AppUserId { get; set; }
         public AppUser Admin { get; set; }
 
+        public ICollection<Services> Services { get; set; }
 
     }
 }
