@@ -1,12 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace AppPrawject.Domain.Model
 {
-    public class Services
+    public class Service
 
     {
         public int Id { get; set; }
-        public string ServiceType { get; set; }
         public DateTime Date { get; set; }
 
 
@@ -18,5 +18,10 @@ namespace AppPrawject.Domain.Model
 
         public int PetBreedId { get; set; }
         public Pet Pet { get; set; }
+
+        public string ServiceType { get; set; }
+        public string ServiceTypeID { get; set; }
+
+        public ICollection<ServicePet> ServicePets { get; set; }
     }
 }

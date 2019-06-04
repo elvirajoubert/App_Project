@@ -1,6 +1,7 @@
 ﻿@model RegisterViewModel
 @{
-    ViewData["Title"] = "Register";
+
+    IEnumerable<SelectListItem> roleListItems = new SelectList(Model.Roles, "Name", "Name");
 }
 
 <h1>Register</h1>
@@ -24,6 +25,11 @@
         <label asp-for="ConfirmPassword"></label>
         <input asp-for="ConfirmPassword" class="form-control" />
         <span asp-validation-for="ConfirmPassword"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Role"></label>
+        <select asp-for="Role" class="form-control" asp-items="@roleListItems"></select>
     </div>
 
     <button type="submit" class="btn btn-primary">Register</button>

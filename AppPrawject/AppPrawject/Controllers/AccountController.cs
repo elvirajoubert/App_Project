@@ -2,6 +2,7 @@
 using AppPrawject.Model;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AppPrawject.WebUI.Controllers
@@ -10,12 +11,16 @@ namespace AppPrawject.WebUI.Controllers
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
+        public AccountController(UserManager<AppUser> userManager,
+            SignInManager<AppUser> signInManager,
+            RoleManager<IdentityRole> roleManager)
 
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _roleManager = roleManager;
 
 
         }
@@ -23,8 +28,16 @@ namespace AppPrawject.WebUI.Controllers
         [HttpGet]
         public IActionResult Register()
         {
+
             RedirectUserWhenAlreadyLoggedIn();
-            return View();
+
+            var roles = _roleManager.Roles.ToList();
+
+            var vm = new RegisterViewModel
+            {
+                Roles = roles
+            };
+            return View(vm);
         }
 
         [HttpPost]
@@ -46,15 +59,28 @@ namespace AppPrawject.WebUI.Controllers
 
                 var result = await _userManager.CreateAsync(newUser, vm.Password);
 
-                if (result.Succeeded)
-                {
-                    //new user got created
-                    //we can login the user 
-                    //send user to the right app page(redirect)
-                    await _signInManager.SignInAsync(newUser, false);
+                if (result.Succeeded)//new user got created
 
-                    return RedirectToAction("Index", "Home"); //home/index
-                    //return RedirectToAction(nameof(HomeController.Index), nameof(HomeController));
+                {
+                    //assign the selected role to the newly created user(customer or Admin)
+
+                    result = await _userManager.AddToRoleAsync(newUser, vm.Role);
+
+                    if (result.Succeeded) //new user got assigned to a role
+                    {
+                        //we can login the user 
+                        await _signInManager.SignInAsync(newUser, false);
+
+                        //redirect
+                        if (vm.Role == "Administrator")
+                        {
+                            return RedirectToAction("Index", "Administrator");
+
+                        }
+
+                        return RedirectToAction("Index", "Customer");
+                    }
+
                 }
 
                 else

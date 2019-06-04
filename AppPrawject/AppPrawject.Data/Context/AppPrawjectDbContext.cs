@@ -1,4 +1,5 @@
 ﻿using AppPrawject.Domain.Model;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,7 +17,7 @@ namespace AppPrawject.Data.Context
         // They map to tables by default
         public DbSet<Pet> Pets { get; set; }
         public DbSet<PetBreed> PetBreeds { get; set; }
-        public DbSet<Services> Services { get; set; }
+        public DbSet<Service> Services { get; set; }
         //public DbSet<ServiceType> ServiceTypes {get; set;}
 
         //Virtual medthod designed to be overridden
@@ -81,32 +82,37 @@ namespace AppPrawject.Data.Context
                 );
 
 
-            modelBuilder.Entity<Services>().HasData(
-                new Services { Id = 1, UserId = "1", ServiceType = "Boarding" },
-                new Services { Id = 2, UserId = "2", ServiceType = "Grooming" },
-                new Services { Id = 3, UserId = "3", ServiceType = "Both" });
+            modelBuilder.Entity<Service>().HasData(
+                new Service { Id = 1, UserId = "1", ServiceType = "Boarding" },
+                new Service { Id = 2, UserId = "2", ServiceType = "Grooming" },
+                new Service { Id = 3, UserId = "3", ServiceType = "Both" });
 
 
-            //Adding Services as the intermediate table b/n Pet and AppUser
-            //add seeding with service type - 3 options
+
 
 
 
             //Adding ServicePet as a table in between Service and AppUser
-            modelBuilder.Entity<Services>()
-                 .HasKey(s => new { s.PetBreedId, s.UserId }); //Combined PK
+            modelBuilder.Entity<ServicePet>()
+                 .HasKey(s => new { s.PetId, s.ServiceId }); //Combined PK
 
-            modelBuilder.Entity<Services>() //Account Holder is an AppUser
-                .HasOne(s => s.User)
-                .WithMany(a => a.Services)
-                .HasForeignKey(s => s.UserId);
+            modelBuilder.Entity<ServicePet>() //Customer is an AppUser
+                .HasOne(sp => sp.Pet)               //sp - servicepet
+                .WithMany(a => a.ServicePets)
+                .HasForeignKey(s => s.PetId);
 
 
-            modelBuilder.Entity<Services>()
-                .HasOne(s => s.Pet)
-                .WithMany(p => p.Services)
-                .HasForeignKey(s => s.PetBreedId);
+            modelBuilder.Entity<ServicePet>()
+                .HasOne(sp => sp.Service)
+                .WithMany(s => s.ServicePets)
+                .HasForeignKey(s => s.ServiceId);
 
+
+
+            modelBuilder.Entity<IdentityRole>().HasData(
+                new IdentityRole { Name = "Customer", NormalizedName = "CUSTOMER" },
+                new IdentityRole { Name = "Administrator", NormalizedName = "ADMINISTRATOR" }
+            );
         }
     }
 }

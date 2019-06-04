@@ -26,7 +26,9 @@ namespace AppPrawject.Domain.Model
         public string AppUserId { get; set; }
         public AppUser Admin { get; set; }
 
-        public ICollection<Services> Services { get; set; }
+        public ICollection<Service> ServiceType { get; set; }
+
+        public ICollection<ServicePet> ServicePets { get; set; }
 
     }
 }
