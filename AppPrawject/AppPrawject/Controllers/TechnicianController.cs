@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AppPrawject.WebUI.Controllers
 {
-    [Authorize(Roles = "Administrator")]
-    public class AdministratorController : Controller
+    [Authorize(Roles = "Technician")]
+    public class TechnicianController : Controller
     {
         public IActionResult Index()
         {

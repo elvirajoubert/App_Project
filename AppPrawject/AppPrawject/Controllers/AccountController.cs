@@ -72,9 +72,9 @@ namespace AppPrawject.WebUI.Controllers
                         await _signInManager.SignInAsync(newUser, false);
 
                         //redirect
-                        if (vm.Role == "Administrator")
+                        if (vm.Role == "Technician")
                         {
-                            return RedirectToAction("Index", "Administrator");
+                            return RedirectToAction("Index", "Technician");
 
                         }
 

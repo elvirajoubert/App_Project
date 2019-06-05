@@ -111,7 +111,7 @@ namespace AppPrawject.Data.Context
 
             modelBuilder.Entity<IdentityRole>().HasData(
                 new IdentityRole { Name = "Customer", NormalizedName = "CUSTOMER" },
-                new IdentityRole { Name = "Administrator", NormalizedName = "ADMINISTRATOR" }
+                new IdentityRole { Name = "Technician", NormalizedName = "TECHNICIAN" }
             );
         }
     }

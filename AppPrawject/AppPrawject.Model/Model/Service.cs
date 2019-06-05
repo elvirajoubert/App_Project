@@ -20,7 +20,7 @@ namespace AppPrawject.Domain.Model
         public Pet Pet { get; set; }
 
         public string ServiceType { get; set; }
-        public string ServiceTypeID { get; set; }
+        public string ServiceTypeId { get; set; }
 
         public ICollection<ServicePet> ServicePets { get; set; }
     }
