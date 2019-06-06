@@ -7,7 +7,7 @@ namespace AppPrawject.Data.Interfaces
     {
         //Read
         Pet GetById(int id);
-        ICollection<Pet> GetAllPets();
+        ICollection<Pet> GetAllPetsByUserId(string userid);
 
         //Create
         Pet Create(Pet newPet);

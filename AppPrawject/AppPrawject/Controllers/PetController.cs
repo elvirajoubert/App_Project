@@ -1,21 +1,29 @@
 ﻿using AppPrawject.Domain.Model;
 using AppPrawject.Service.Services;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AppPrawject.WebUI.Controllers
 {
+    [Authorize(Roles = "Provider, Customer")]
     public class PetController : Controller
 
     {
         private const string PETBREEDS = "PetBreeds";
         private readonly IPetService _petService;
         private readonly IPetBreedService _petBreedService;
+        private readonly UserManager<AppUser> _userManager;
 
-        public PetController(IPetService petService, IPetBreedService petBreedService)
+        public UserManager<AppUser> userManager { get; private set; }
+
+        public PetController(IPetService petService, IPetBreedService petBreedService, UserManager<AppUser> userManager)
+
 
         {
             _petService = petService;
             _petBreedService = petBreedService;
+            _userManager = userManager;
         }
 
         // pet/index
@@ -28,7 +36,10 @@ namespace AppPrawject.WebUI.Controllers
                 ViewData.Add("Error", TempData["Error"]);
             }
 
-            var pets = _petService.GetAllPets();
+
+            //should have the user id to filter the pets they own
+            var userId = _userManager.GetUserId(User);
+            var pets = _petService.GetAllPetsByUserId(userId);
             return View(pets);
         }
 
@@ -49,6 +60,11 @@ namespace AppPrawject.WebUI.Controllers
 
             if (ModelState.IsValid) //all required fields are completed
             {
+
+                //assign the user to the pet
+                newPet.AppUserId = _userManager.GetUserId(User);//value is null
+
+
                 //we should be able to add new pet 
                 _petService.Create(newPet);
                 return RedirectToAction(nameof(Index)); // -> Index();

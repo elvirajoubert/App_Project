@@ -316,6 +316,63 @@ namespace AppPrawject.Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("AppPrawject.Domain.Model.Service", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CustomerId");
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<int?>("PetId");
+
+                    b.Property<string>("ProviderId");
+
+                    b.Property<string>("ServiceTypeId");
+
+                    b.Property<int?>("ServiceTypeId1");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("PetId");
+
+                    b.HasIndex("ProviderId");
+
+                    b.HasIndex("ServiceTypeId1");
+
+                    b.ToTable("Services");
+                });
+
+            modelBuilder.Entity("AppPrawject.Domain.Model.ServicePet", b =>
+                {
+                    b.Property<int>("PetId");
+
+                    b.Property<int>("ServiceId");
+
+                    b.HasKey("PetId", "ServiceId");
+
+                    b.HasIndex("ServiceId");
+
+                    b.ToTable("ServicePets");
+                });
+
+            modelBuilder.Entity("AppPrawject.Domain.Model.ServiceType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ServiceTypes");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -338,6 +395,22 @@ namespace AppPrawject.Data.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "f8db62fb-6fcb-4f13-a9e5-bb870d533abf",
+                            ConcurrencyStamp = "de4931da-31f5-4f17-a000-e17d8304887b",
+                            Name = "Customer",
+                            NormalizedName = "CUSTOMER"
+                        },
+                        new
+                        {
+                            Id = "dbb40a0e-e5d7-4eae-8f36-513e4f169a78",
+                            ConcurrencyStamp = "4dc0276b-5238-410f-96ac-ae440c1fd50a",
+                            Name = "Provider",
+                            NormalizedName = "PROVIDER"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -435,6 +508,38 @@ namespace AppPrawject.Data.Migrations
                     b.HasOne("AppPrawject.Domain.Model.PetBreed", "PetBreed")
                         .WithMany()
                         .HasForeignKey("PetBreedId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("AppPrawject.Domain.Model.Service", b =>
+                {
+                    b.HasOne("AppPrawject.Domain.Model.AppUser", "Customer")
+                        .WithMany("CustomerServices")
+                        .HasForeignKey("CustomerId");
+
+                    b.HasOne("AppPrawject.Domain.Model.Pet")
+                        .WithMany("ServiceType")
+                        .HasForeignKey("PetId");
+
+                    b.HasOne("AppPrawject.Domain.Model.AppUser", "Provider")
+                        .WithMany("ProviderServices")
+                        .HasForeignKey("ProviderId");
+
+                    b.HasOne("AppPrawject.Domain.Model.ServiceType", "ServiceType")
+                        .WithMany()
+                        .HasForeignKey("ServiceTypeId1");
+                });
+
+            modelBuilder.Entity("AppPrawject.Domain.Model.ServicePet", b =>
+                {
+                    b.HasOne("AppPrawject.Domain.Model.Pet", "Pet")
+                        .WithMany("ServicePets")
+                        .HasForeignKey("PetId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("AppPrawject.Domain.Model.Service", "Service")
+                        .WithMany("ServicePets")
+                        .HasForeignKey("ServiceId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

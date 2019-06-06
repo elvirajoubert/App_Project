@@ -3,8 +3,11 @@
     public class ServicePet
 
     {
-        public double Payment { get; set; }
-        public string PetId { get; set; }
-        public string ServiceId { get; set; }
+        public Pet Pet { get; set; }
+        public int PetId { get; set; }
+
+        //public services
+        public Service Service { get; set; }
+        public int ServiceId { get; set; }
     }
 }

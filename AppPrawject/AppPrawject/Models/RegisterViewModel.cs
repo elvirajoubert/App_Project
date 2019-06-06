@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace AppPrawject.Model
 {
@@ -14,5 +16,10 @@ namespace AppPrawject.Model
         [DataType(DataType.Password), Required]
         [Compare("Password", ErrorMessage = "Password does not match. Try again.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        public string Role { get; set; }
+
+        public List<IdentityRole> Roles { get; set; }
     }
 }

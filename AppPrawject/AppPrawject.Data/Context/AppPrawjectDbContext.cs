@@ -1,4 +1,5 @@
 ﻿using AppPrawject.Domain.Model;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,6 +17,11 @@ namespace AppPrawject.Data.Context
         // They map to tables by default
         public DbSet<Pet> Pets { get; set; }
         public DbSet<PetBreed> PetBreeds { get; set; }
+        public DbSet<Service> Services { get; set; }
+        public DbSet<ServiceType> ServiceTypes { get; set; }
+        public DbSet<ServicePet> ServicePets { get; set; }
+
+        //public DbSet<ServiceType> ServiceTypes {get; set;}
 
         //Virtual medthod designed to be overridden
         // You can provide configuration information for the context
@@ -79,6 +85,41 @@ namespace AppPrawject.Data.Context
                 );
 
 
+
+            //Adding ServicePet as a table in between Service and AppUser
+            modelBuilder.Entity<ServicePet>()
+                 .HasKey(s => new { s.PetId, s.ServiceId }); //Combined PK
+
+            modelBuilder.Entity<ServicePet>() //Customer is an AppUser
+                .HasOne(sp => sp.Pet)               //sp - servicepet
+                .WithMany(a => a.ServicePets)
+                .HasForeignKey(s => s.PetId);
+
+
+            modelBuilder.Entity<ServicePet>()
+                .HasOne(sp => sp.Service)
+                .WithMany(s => s.ServicePets)
+                .HasForeignKey(s => s.ServiceId);
+
+
+            //using FluentAPI to manage Service and AppUser relationship
+
+            modelBuilder.Entity<Service>()  //c- customer, s - service
+                .HasOne(s => s.Customer)
+                .WithMany(c => c.CustomerServices)
+                .HasForeignKey(s => s.CustomerId);
+
+            modelBuilder.Entity<Service>()  //p - provider
+             .HasOne(s => s.Provider)
+             .WithMany(p => p.ProviderServices)
+             .HasForeignKey(s => s.ProviderId);
+
+
+
+            modelBuilder.Entity<IdentityRole>().HasData(
+                new IdentityRole { Name = "Customer", NormalizedName = "CUSTOMER" },
+                new IdentityRole { Name = "Provider", NormalizedName = "PROVIDER" }
+            );
         }
     }
 }

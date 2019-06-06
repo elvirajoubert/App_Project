@@ -5,11 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20190430002615_initial.cs" />
     <Compile Remove="Migrations\20190430003746_added-geo-location.cs" />
     <Compile Remove="Migrations\20190509002728_add-pet-breed-with-seeding.cs" />
     <Compile Remove="Migrations\20190509010535_add-pet-breed-relationship.cs" />
     <Compile Remove="Migrations\20190509010908_add-pet-breed-relationship.cs" />
     <Compile Remove="Migrations\20190514022258_pet-seeding-and-relationship.cs" />
+    <Compile Remove="Migrations\20190514131911_pet-seeding-and-relationship.cs" />
+    <Compile Remove="Migrations\20190516011145_added-identity-to-the-application.cs" />
+    <Compile Remove="Migrations\20190604015447_added-servicepet-identity-roles.cs" />
+    <Compile Remove="Migrations\20190606012302_added-customer-provider-services.cs" />
   </ItemGroup>
 
   <ItemGroup>
