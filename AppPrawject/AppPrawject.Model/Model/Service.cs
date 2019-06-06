@@ -11,17 +11,19 @@ namespace AppPrawject.Domain.Model
 
 
         //Relationship b/n AppUser and Service
-        public string UserId { get; set; }
-        public AppUser User { get; set; }
+        public string CustomerId { get; set; }
+        public AppUser Customer { get; set; }
+
+
+        public string ProviderId { get; set; }
+        public AppUser Provider { get; set; }
+
 
         //Relationship b/n  Pet and Service
-
-        public int PetBreedId { get; set; }
-        public Pet Pet { get; set; }
-
-        public string ServiceType { get; set; }
+        public ServiceType ServiceType { get; set; }
         public string ServiceTypeId { get; set; }
 
         public ICollection<ServicePet> ServicePets { get; set; }
+
     }
 }

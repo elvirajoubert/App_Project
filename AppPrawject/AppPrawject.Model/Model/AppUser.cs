@@ -9,6 +9,7 @@ namespace AppPrawject.Domain.Model
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        public ICollection<Service> Services { get; set; }
+        public ICollection<Service> CustomerServices { get; set; }
+        public ICollection<Service> ProviderServices { get; set; }
     }
 }

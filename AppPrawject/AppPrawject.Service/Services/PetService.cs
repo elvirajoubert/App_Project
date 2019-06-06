@@ -10,7 +10,7 @@ namespace AppPrawject.Service.Services
 
         //Read
         Pet GetById(int id);
-        ICollection<Pet> GetAllPets();
+        ICollection<Pet> GetAllPetsByUserId(string userId);
 
         //Create
         Pet Create(Pet newPet);
@@ -36,10 +36,10 @@ namespace AppPrawject.Service.Services
         }
 
 
-        public ICollection<Pet> GetAllPets()
+        public ICollection<Pet> GetAllPetsByUserId(string userId)
         {
 
-            return _petRepository.GetAllPets();
+            return _petRepository.GetAllPetsByUserId(userId);
         }
 
         public Pet Create(Pet newPet)

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AppPrawject.Data.Migrations
 {
     [DbContext(typeof(AppPrawjectDbContext))]
-    [Migration("20190604015447_added-servicepet-identity-roles")]
-    partial class addedservicepetidentityroles
+    [Migration("20190606014338_added-relationships-user-roles-servicepet-providerservice-customer-service-provide-id-customer-id")]
+    partial class addedrelationshipsuserrolesservicepetproviderservicecustomerserviceprovideidcustomerid
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -324,49 +324,29 @@ namespace AppPrawject.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("Date");
+                    b.Property<string>("CustomerId");
 
-                    b.Property<int>("PetBreedId");
+                    b.Property<DateTime>("Date");
 
                     b.Property<int?>("PetId");
 
-                    b.Property<string>("ServiceType");
+                    b.Property<string>("ProviderId");
 
-                    b.Property<string>("UserId");
+                    b.Property<string>("ServiceTypeId");
+
+                    b.Property<int?>("ServiceTypeId1");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CustomerId");
+
                     b.HasIndex("PetId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("ProviderId");
+
+                    b.HasIndex("ServiceTypeId1");
 
                     b.ToTable("Services");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Date = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            PetBreedId = 0,
-                            ServiceType = "Boarding",
-                            UserId = "1"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Date = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            PetBreedId = 0,
-                            ServiceType = "Grooming",
-                            UserId = "2"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Date = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            PetBreedId = 0,
-                            ServiceType = "Both",
-                            UserId = "3"
-                        });
                 });
 
             modelBuilder.Entity("AppPrawject.Domain.Model.ServicePet", b =>
@@ -379,7 +359,20 @@ namespace AppPrawject.Data.Migrations
 
                     b.HasIndex("ServiceId");
 
-                    b.ToTable("ServicePet");
+                    b.ToTable("ServicePets");
+                });
+
+            modelBuilder.Entity("AppPrawject.Domain.Model.ServiceType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ServiceTypes");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -408,17 +401,17 @@ namespace AppPrawject.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "f5cbe7c9-958d-41d0-8e96-7b994c5dd0c0",
-                            ConcurrencyStamp = "98fcb7bd-b927-42e5-a3e4-317fd6b98521",
+                            Id = "f8db62fb-6fcb-4f13-a9e5-bb870d533abf",
+                            ConcurrencyStamp = "de4931da-31f5-4f17-a000-e17d8304887b",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         },
                         new
                         {
-                            Id = "c4a4e680-3db9-4be8-928a-9fb13d49e2cb",
-                            ConcurrencyStamp = "d39108fd-32a8-426e-a6c8-ab8f9c7e8620",
-                            Name = "Administrator",
-                            NormalizedName = "ADMINISTRATOR"
+                            Id = "dbb40a0e-e5d7-4eae-8f36-513e4f169a78",
+                            ConcurrencyStamp = "4dc0276b-5238-410f-96ac-ae440c1fd50a",
+                            Name = "Provider",
+                            NormalizedName = "PROVIDER"
                         });
                 });
 
@@ -522,13 +515,21 @@ namespace AppPrawject.Data.Migrations
 
             modelBuilder.Entity("AppPrawject.Domain.Model.Service", b =>
                 {
-                    b.HasOne("AppPrawject.Domain.Model.Pet", "Pet")
+                    b.HasOne("AppPrawject.Domain.Model.AppUser", "Customer")
+                        .WithMany("CustomerServices")
+                        .HasForeignKey("CustomerId");
+
+                    b.HasOne("AppPrawject.Domain.Model.Pet")
                         .WithMany("ServiceType")
                         .HasForeignKey("PetId");
 
-                    b.HasOne("AppPrawject.Domain.Model.AppUser", "User")
-                        .WithMany("Services")
-                        .HasForeignKey("UserId");
+                    b.HasOne("AppPrawject.Domain.Model.AppUser", "Provider")
+                        .WithMany("ProviderServices")
+                        .HasForeignKey("ProviderId");
+
+                    b.HasOne("AppPrawject.Domain.Model.ServiceType", "ServiceType")
+                        .WithMany()
+                        .HasForeignKey("ServiceTypeId1");
                 });
 
             modelBuilder.Entity("AppPrawject.Domain.Model.ServicePet", b =>

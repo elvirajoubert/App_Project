@@ -22,12 +22,12 @@ namespace AppPrawject.Data.Implementation.SqlServer
             }
         }
 
-        public ICollection<Pet> GetAllPets()
+        public ICollection<Pet> GetAllPetsByUserId(string userId)
         {
             using (var context = new AppPrawjectDbContext())
             {
                 //DBSet != ICollection
-                return context.Pets.ToList(); //Now it is ICollection
+                return context.Pets.Where(p => p.AppUserId == userId).ToList(); //Now it is ICollection
             }
         }
 

@@ -62,9 +62,9 @@ namespace AppPrawject.WebUI.Controllers
                 if (result.Succeeded)//new user got created
 
                 {
-                    //assign the selected role to the newly created user(customer or Admin)
+                    //assign the selected role to the newly created user(customer or technician)
 
-                    result = await _userManager.AddToRoleAsync(newUser, vm.Role);
+                    result = await _userManager.AddToRoleAsync(newUser, "Customer");
 
                     if (result.Succeeded) //new user got assigned to a role
                     {
@@ -72,9 +72,9 @@ namespace AppPrawject.WebUI.Controllers
                         await _signInManager.SignInAsync(newUser, false);
 
                         //redirect
-                        if (vm.Role == "Technician")
+                        if (vm.Role == "Provider")
                         {
-                            return RedirectToAction("Index", "Technician");
+                            return RedirectToAction("Index", "Provider");
 
                         }
 
@@ -97,6 +97,10 @@ namespace AppPrawject.WebUI.Controllers
 
             }
             //sending back the error(s) to the user (register form)
+
+            //repopulate the Roles to generate the dropdown
+            var roles = _roleManager.Roles.ToList();
+            vm.Roles = roles;
             return View(vm);
         }
 

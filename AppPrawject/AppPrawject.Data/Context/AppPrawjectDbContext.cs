@@ -18,6 +18,9 @@ namespace AppPrawject.Data.Context
         public DbSet<Pet> Pets { get; set; }
         public DbSet<PetBreed> PetBreeds { get; set; }
         public DbSet<Service> Services { get; set; }
+        public DbSet<ServiceType> ServiceTypes { get; set; }
+        public DbSet<ServicePet> ServicePets { get; set; }
+
         //public DbSet<ServiceType> ServiceTypes {get; set;}
 
         //Virtual medthod designed to be overridden
@@ -82,15 +85,6 @@ namespace AppPrawject.Data.Context
                 );
 
 
-            modelBuilder.Entity<Service>().HasData(
-                new Service { Id = 1, UserId = "1", ServiceType = "Boarding" },
-                new Service { Id = 2, UserId = "2", ServiceType = "Grooming" },
-                new Service { Id = 3, UserId = "3", ServiceType = "Both" });
-
-
-
-
-
 
             //Adding ServicePet as a table in between Service and AppUser
             modelBuilder.Entity<ServicePet>()
@@ -108,10 +102,23 @@ namespace AppPrawject.Data.Context
                 .HasForeignKey(s => s.ServiceId);
 
 
+            //using FluentAPI to manage Service and AppUser relationship
+
+            modelBuilder.Entity<Service>()  //c- customer, s - service
+                .HasOne(s => s.Customer)
+                .WithMany(c => c.CustomerServices)
+                .HasForeignKey(s => s.CustomerId);
+
+            modelBuilder.Entity<Service>()  //p - provider
+             .HasOne(s => s.Provider)
+             .WithMany(p => p.ProviderServices)
+             .HasForeignKey(s => s.ProviderId);
+
+
 
             modelBuilder.Entity<IdentityRole>().HasData(
                 new IdentityRole { Name = "Customer", NormalizedName = "CUSTOMER" },
-                new IdentityRole { Name = "Technician", NormalizedName = "TECHNICIAN" }
+                new IdentityRole { Name = "Provider", NormalizedName = "PROVIDER" }
             );
         }
     }
