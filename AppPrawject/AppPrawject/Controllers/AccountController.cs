@@ -78,7 +78,7 @@ namespace AppPrawject.WebUI.Controllers
 
                         }
 
-                        return RedirectToAction("Index", "Customer");
+                        return RedirectToAction("Index", "Provider");
                     }
 
                 }

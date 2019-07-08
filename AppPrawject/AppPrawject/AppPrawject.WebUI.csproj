@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <UserSecretsId>db26ff24-9a22-4338-8332-20f0933505a2</UserSecretsId>
   </PropertyGroup>
 
 
@@ -17,6 +18,18 @@
     <ProjectReference Include="..\AppPrawject.Data\AppPrawject.Data.csproj" />
     <ProjectReference Include="..\AppPrawject.Model\AppPrawject.Domain.csproj" />
     <ProjectReference Include="..\AppPrawject.Service\AppPrawject.Service.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <None Update="app-prawject.db">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
 </Project>

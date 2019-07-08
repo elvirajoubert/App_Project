@@ -29,7 +29,8 @@ namespace AppPrawject.Data.Context
         {
             //Connection string is divided in 3 elements
             //server - database - authentication 
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=appprawject;Trusted_Connection=true");
+            //optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=appprawject;Trusted_Connection=true");
+            optionsBuilder.UseSqlite("Data Source=C:\\Users\\Elvira KGB\\Desktop\\NETCORE\\App_Project\\AppPrawject\\AppPrawject\\app-prawject.db");
         }
 
 
@@ -80,7 +81,8 @@ namespace AppPrawject.Data.Context
                 new PetBreed { Id = 37, Description = "Doberman" },
                 new PetBreed { Id = 38, Description = "Bullterrier" },
                 new PetBreed { Id = 39, Description = "English Mastiff" },
-                new PetBreed { Id = 40, Description = "Pitbull" }
+                new PetBreed { Id = 40, Description = "Cat" },
+                new PetBreed { Id = 41, Description = "Pitbull" }
 
                 );
 

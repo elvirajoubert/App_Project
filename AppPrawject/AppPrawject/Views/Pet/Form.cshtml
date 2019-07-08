@@ -15,16 +15,18 @@
     var petBreeds = ViewData["PetBreeds"] as ICollection<PetBreed>; //ICollection<PetBreed>
     IEnumerable<SelectListItem> petItems = new SelectList(petBreeds, "Id", "Description");
 
-    @if (action == "Add more")
-    {
-        <h1>Add a new pet </h1>
-    }
-    else
-    {
-        <h1>Edit a pet </h1>
-    }
-
 }
+
+@if (action == "Add more")
+{
+    <h1>Add a new pet </h1>
+}
+else
+{
+    <h1>Edit a pet </h1>
+}
+
+
 
 
 

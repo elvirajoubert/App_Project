@@ -105,6 +105,9 @@ namespace AppPrawject.WebUI.Controllers
         public IActionResult Edit(int id) //get id from URL
         {
             var pet = _petService.GetById(id);
+
+            GetPetBreeds();
+
             return View("Form", pet);// Edit.cshtml, renamed to Form.cshtml
         }
 
@@ -117,6 +120,8 @@ namespace AppPrawject.WebUI.Controllers
                 return RedirectToAction(nameof(Index));
 
             }
+            GetPetBreeds();
+
             return View("Form", updatedPet); //By passing updatedPet we trigger the logic for Edit Form.cshtml
 
         }

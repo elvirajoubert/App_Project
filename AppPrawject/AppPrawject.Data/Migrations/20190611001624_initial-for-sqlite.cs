@@ -1,10 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 
 namespace AppPrawject.Data.Migrations
 {
-    public partial class addedrelationshipsuserrolesservicepetproviderservicecustomerserviceprovideidcustomerid : Migration
+    public partial class initialforsqlite : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -54,7 +53,7 @@ namespace AppPrawject.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Sqlite:Autoincrement", true),
                     Description = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
@@ -67,7 +66,7 @@ namespace AppPrawject.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Sqlite:Autoincrement", true),
                     Description = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -80,7 +79,7 @@ namespace AppPrawject.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Sqlite:Autoincrement", true),
                     RoleId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -101,7 +100,7 @@ namespace AppPrawject.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Sqlite:Autoincrement", true),
                     UserId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -186,7 +185,7 @@ namespace AppPrawject.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(nullable: false),
                     Weight = table.Column<int>(nullable: false),
                     Image = table.Column<string>(nullable: true),
@@ -215,7 +214,7 @@ namespace AppPrawject.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Sqlite:Autoincrement", true),
                     Date = table.Column<DateTime>(nullable: false),
                     CustomerId = table.Column<string>(nullable: true),
                     ProviderId = table.Column<string>(nullable: true),
@@ -279,58 +278,212 @@ namespace AppPrawject.Data.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[,]
-                {
-                    { "dbb40a0e-e5d7-4eae-8f36-513e4f169a78", "4dc0276b-5238-410f-96ac-ae440c1fd50a", "Provider", "PROVIDER" },
-                    { "f8db62fb-6fcb-4f13-a9e5-bb870d533abf", "de4931da-31f5-4f17-a000-e17d8304887b", "Customer", "CUSTOMER" }
-                });
+                values: new object[] { "b5a75374-d7a1-4924-ab70-e4a40e254864", "7784141e-72c2-40ce-99a8-fde56d486954", "Provider", "PROVIDER" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { "2045c760-e6ca-4c8b-907b-1f6dbf301da2", "d005a790-24a3-483a-aec1-00ef53cb8830", "Customer", "CUSTOMER" });
 
             migrationBuilder.InsertData(
                 table: "PetBreeds",
                 columns: new[] { "Id", "Description" },
-                values: new object[,]
-                {
-                    { 39, "English Mastiff" },
-                    { 23, "Pomeranian" },
-                    { 24, "Pembroke Welsh Corgi" },
-                    { 25, "Bernese Mountain Dog" },
-                    { 26, "Basset Hound" },
-                    { 27, "Greyhound" },
-                    { 28, "American Staffordshire Terrier" },
-                    { 29, "Jack Russell Terrier" },
-                    { 40, "Pitbull" },
-                    { 30, "Australian Cattle Dog" },
-                    { 32, "Akita" },
-                    { 33, "American Foxhound" },
-                    { 34, "Vizsla" },
-                    { 35, "Scottish Terrier" },
-                    { 36, "Weimaraner" },
-                    { 37, "Doberman" },
-                    { 38, "Bullterrier" },
-                    { 22, "Dachshund" },
-                    { 31, "Alaskan Malamute" },
-                    { 21, "Pointer" },
-                    { 19, "Bichon Frise" },
-                    { 2, "Chihuahua" },
-                    { 3, "Poodle" },
-                    { 4, "Beagle" },
-                    { 5, "Mixed Breed" },
-                    { 6, "Boston Terrier" },
-                    { 7, "Collie" },
-                    { 8, "French Bulldog" },
-                    { 9, "German Shepherd" },
-                    { 10, "Pug" },
-                    { 11, "Bulldog" },
-                    { 12, "Siberian Husky" },
-                    { 13, "Great Dane" },
-                    { 14, "Rottweiler" },
-                    { 15, "Yorkshire Terrier" },
-                    { 16, "Golden Retriever" },
-                    { 17, "Boxer" },
-                    { 18, "Australian Shepherd" },
-                    { 20, "Chow Chow" },
-                    { 1, "Labrador" }
-                });
+                values: new object[] { 39, "English Mastiff" });
+
+            migrationBuilder.InsertData(
+                table: "PetBreeds",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 23, "Pomeranian" });
+
+            migrationBuilder.InsertData(
+                table: "PetBreeds",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 24, "Pembroke Welsh Corgi" });
+
+            migrationBuilder.InsertData(
+                table: "PetBreeds",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 25, "Bernese Mountain Dog" });
+
+            migrationBuilder.InsertData(
+                table: "PetBreeds",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 26, "Basset Hound" });
+
+            migrationBuilder.InsertData(
+                table: "PetBreeds",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 27, "Greyhound" });
+
+            migrationBuilder.InsertData(
+                table: "PetBreeds",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 28, "American Staffordshire Terrier" });
+
+            migrationBuilder.InsertData(
+                table: "PetBreeds",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 29, "Jack Russell Terrier" });
+
+            migrationBuilder.InsertData(
+                table: "PetBreeds",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 40, "Pitbull" });
+
+            migrationBuilder.InsertData(
+                table: "PetBreeds",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 30, "Australian Cattle Dog" });
+
+            migrationBuilder.InsertData(
+                table: "PetBreeds",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 32, "Akita" });
+
+            migrationBuilder.InsertData(
+                table: "PetBreeds",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 33, "American Foxhound" });
+
+            migrationBuilder.InsertData(
+                table: "PetBreeds",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 34, "Vizsla" });
+
+            migrationBuilder.InsertData(
+                table: "PetBreeds",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 35, "Scottish Terrier" });
+
+            migrationBuilder.InsertData(
+                table: "PetBreeds",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 36, "Weimaraner" });
+
+            migrationBuilder.InsertData(
+                table: "PetBreeds",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 37, "Doberman" });
+
+            migrationBuilder.InsertData(
+                table: "PetBreeds",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 38, "Bullterrier" });
+
+            migrationBuilder.InsertData(
+                table: "PetBreeds",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 22, "Dachshund" });
+
+            migrationBuilder.InsertData(
+                table: "PetBreeds",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 31, "Alaskan Malamute" });
+
+            migrationBuilder.InsertData(
+                table: "PetBreeds",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 21, "Pointer" });
+
+            migrationBuilder.InsertData(
+                table: "PetBreeds",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 19, "Bichon Frise" });
+
+            migrationBuilder.InsertData(
+                table: "PetBreeds",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 2, "Chihuahua" });
+
+            migrationBuilder.InsertData(
+                table: "PetBreeds",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 3, "Poodle" });
+
+            migrationBuilder.InsertData(
+                table: "PetBreeds",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 4, "Beagle" });
+
+            migrationBuilder.InsertData(
+                table: "PetBreeds",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 5, "Mixed Breed" });
+
+            migrationBuilder.InsertData(
+                table: "PetBreeds",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 6, "Boston Terrier" });
+
+            migrationBuilder.InsertData(
+                table: "PetBreeds",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 7, "Collie" });
+
+            migrationBuilder.InsertData(
+                table: "PetBreeds",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 8, "French Bulldog" });
+
+            migrationBuilder.InsertData(
+                table: "PetBreeds",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 9, "German Shepherd" });
+
+            migrationBuilder.InsertData(
+                table: "PetBreeds",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 10, "Pug" });
+
+            migrationBuilder.InsertData(
+                table: "PetBreeds",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 11, "Bulldog" });
+
+            migrationBuilder.InsertData(
+                table: "PetBreeds",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 12, "Siberian Husky" });
+
+            migrationBuilder.InsertData(
+                table: "PetBreeds",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 13, "Great Dane" });
+
+            migrationBuilder.InsertData(
+                table: "PetBreeds",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 14, "Rottweiler" });
+
+            migrationBuilder.InsertData(
+                table: "PetBreeds",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 15, "Yorkshire Terrier" });
+
+            migrationBuilder.InsertData(
+                table: "PetBreeds",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 16, "Golden Retriever" });
+
+            migrationBuilder.InsertData(
+                table: "PetBreeds",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 17, "Boxer" });
+
+            migrationBuilder.InsertData(
+                table: "PetBreeds",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 18, "Australian Shepherd" });
+
+            migrationBuilder.InsertData(
+                table: "PetBreeds",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 20, "Chow Chow" });
+
+            migrationBuilder.InsertData(
+                table: "PetBreeds",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 1, "Labrador" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -341,8 +494,7 @@ namespace AppPrawject.Data.Migrations
                 name: "RoleNameIndex",
                 table: "AspNetRoles",
                 column: "NormalizedName",
-                unique: true,
-                filter: "[NormalizedName] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserClaims_UserId",
@@ -368,8 +520,7 @@ namespace AppPrawject.Data.Migrations
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
-                unique: true,
-                filter: "[NormalizedUserName] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Pets_AppUserId",
