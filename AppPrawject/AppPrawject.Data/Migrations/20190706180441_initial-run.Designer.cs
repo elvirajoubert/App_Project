@@ -3,23 +3,20 @@ using System;
 using AppPrawject.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AppPrawject.Data.Migrations
 {
     [DbContext(typeof(AppPrawjectDbContext))]
-    [Migration("20190606014338_added-relationships-user-roles-servicepet-providerservice-customer-service-provide-id-customer-id")]
-    partial class addedrelationshipsuserrolesservicepetproviderservicecustomerserviceprovideidcustomerid
+    [Migration("20190706180441_initial-run")]
+    partial class initialrun
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062");
 
             modelBuilder.Entity("AppPrawject.Domain.Model.AppUser", b =>
                 {
@@ -70,8 +67,7 @@ namespace AppPrawject.Data.Migrations
 
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
-                        .HasName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+                        .HasName("UserNameIndex");
 
                     b.ToTable("AspNetUsers");
                 });
@@ -79,8 +75,7 @@ namespace AppPrawject.Data.Migrations
             modelBuilder.Entity("AppPrawject.Domain.Model.Pet", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("AppUserId");
 
@@ -105,8 +100,7 @@ namespace AppPrawject.Data.Migrations
             modelBuilder.Entity("AppPrawject.Domain.Model.PetBreed", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Description")
                         .IsRequired();
@@ -314,6 +308,11 @@ namespace AppPrawject.Data.Migrations
                         new
                         {
                             Id = 40,
+                            Description = "Cat"
+                        },
+                        new
+                        {
+                            Id = 41,
                             Description = "Pitbull"
                         });
                 });
@@ -321,8 +320,7 @@ namespace AppPrawject.Data.Migrations
             modelBuilder.Entity("AppPrawject.Domain.Model.Service", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("CustomerId");
 
@@ -365,8 +363,7 @@ namespace AppPrawject.Data.Migrations
             modelBuilder.Entity("AppPrawject.Domain.Model.ServiceType", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Description");
 
@@ -393,23 +390,22 @@ namespace AppPrawject.Data.Migrations
 
                     b.HasIndex("NormalizedName")
                         .IsUnique()
-                        .HasName("RoleNameIndex")
-                        .HasFilter("[NormalizedName] IS NOT NULL");
+                        .HasName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles");
 
                     b.HasData(
                         new
                         {
-                            Id = "f8db62fb-6fcb-4f13-a9e5-bb870d533abf",
-                            ConcurrencyStamp = "de4931da-31f5-4f17-a000-e17d8304887b",
+                            Id = "c7de4ddb-9c1f-464a-80d3-cd5d2ce1c51a",
+                            ConcurrencyStamp = "db7b5ff3-0776-476a-8b8e-b181a1790209",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         },
                         new
                         {
-                            Id = "dbb40a0e-e5d7-4eae-8f36-513e4f169a78",
-                            ConcurrencyStamp = "4dc0276b-5238-410f-96ac-ae440c1fd50a",
+                            Id = "bb319c7c-c142-4123-b788-0e1eb2ffb8fe",
+                            ConcurrencyStamp = "0a3a7783-5fc4-4910-ab00-3537da259edb",
                             Name = "Provider",
                             NormalizedName = "PROVIDER"
                         });
@@ -418,8 +414,7 @@ namespace AppPrawject.Data.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("ClaimType");
 
@@ -438,8 +433,7 @@ namespace AppPrawject.Data.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("ClaimType");
 

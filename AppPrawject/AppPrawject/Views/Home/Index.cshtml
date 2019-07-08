@@ -1,8 +1,191 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Destination Pawfection</title>
+    <link href="https://fonts.googleapis.com/css?family=Oxygen&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/flexboxgrid.css">
+    <link rel="stylesheet" href="~/css/font-awesome.css">
+    <link rel="stylesheet" href="~/css/fontawesome.css">
+    <link rel="stylesheet" href="~/css/style.css">
+</head>
+
+<body>
+
+    <!--HEADER-->
+
+    <header id="main-header">
+        <div class="container">
+            <div class="row end-sm end-md end-lg center-xs middle-xs middle-sm middle-md middle-lg">
+                <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                    <h1><span class="primary-text">App</span>Prawject</h1>
+                </div>
+                <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
+                    <nav id="navbar">
+                        <ul>
+                            <li class="current"><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="connect.html">Connect</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!--Showcase-->
+
+    <section id="showcase">
+        <div class="container">
+            <div class="row center-xs center-sm center-md center-lg middle-xs middle-sm middle-md midle-lg ">
+                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-7 showcase-content">
+                    <h3><span>Welcome to Pet Grooming Software.</span></h3>
+                    <p>
+                        Destination Pawfection pet grooming software, built exclusively for today's professional pet groomers.
+                    </p>
+                </div>
+                <div class="button"></div>
+            </div>
+        </div>
+    </section> <!--FEATURES-->
+
+    <section id="features">
+        <div class="container">
+            <div class="row center-xs center-sm center-md center-lg">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                    <h2>Pet Grooming Software Highlights</h2>
+
+
+                    <!--ICON ROW 1-->
+                    <div class="row center-xs center-sm center-md center-lg">
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <i class="fa fa-calendar"></i><br>
+                            <h4>Flexible Scheduling</h4>
+                            <p>
+                                Our configurable calendars allow you to schedule appointments where and how you want,
+                                without
+                                restrictions.
+                            </p>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <i class="fa fa-keyboard-o"></i><br>
+                            <h4>Online Booking</h4>
+                            <p>Gain new client leads 24/7 with our smart booking system and new client application. Wake up to new clients every day.</p>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <i class="fa fa-cc-visa"></i><br>
+                            <h4>Point of Sale(POS)</h4>
+                            <p>Our full-featured POS capabilities include integrated inventory controls, full hardware support, payment processing, credit card storage, and more. Streamline your operations.</p>
+                        </div>
+                    </div>
+
+                    <!--ICON ROW 2-->
+                    <div class=" row center-xs center-sm center-md center-lg">
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <i class="fa fa-mobile-phone"></i><br>
+                            <h4>SMS & Email Notifications</h4>
+                            <p>Virtually eliminate cancellations with 2-way SMS & Email automated notifications. Send eminders, invoices, and more!.</p>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <i class="fa fa-umbrella"></i><br>
+                            <h4>Service & Inventory</h4>
+                            <p>Organize your service packages and product inventory all from one easy to use dashboard. Quickly lookup items, update pricing, and create promotions.</p>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <i class="fa fa-dashboard"></i><br>
+                            <h4>Pet Owner Dashboard</h4>
+                            <p>
+                                Client dashboard provides a direct channel of communication between your pet pros and the clients you service. Clients are met with a clean, enjoyable interface where they can view service history
+                                and update information.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!--INFO SECTION-->
+    <section id="info">
+        <div class="container">
+            <div class="row center-xs center-sm center-md center-lg middle-xs middle-sm middle-md middle-lg">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <img src="/images/iphone.png" alt="">
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <h3> Core Features</h3>
+                    <ul>
+                        <li><i class="fa fa-check"></i>Quickbooks Integration</li>
+                        <li><i class="fa fa-check"></i>Stored Payments</li>
+                        <li><i class="fa fa-check"></i>Multiple Platform (Windows, Mac, Android, iOS)</li>
+                        <li><i class="fa fa-check"></i>Free Lifetime Updates</li>
+                        <li><i class="fa fa-check"></i>Advanced Reoccuring Appointments</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!--COMPANY-->
+
+    <section id="company">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <h4> Connect with Us</h4>
+                    <ul>
+                        <li><i class="fa fa-phone"></i> (512)-333-3333</li>
+                        <li><i class="fa fa-envelope"></i> support@mail.com</li>
+                        <li><i class="fa fa-map"></i> 123 Main Street, Austin Texas, 78701</li>
+                    </ul>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <h4>Social Media</h4>
+                    <br>
+                    <i class="fa fa-facebook-official"></i>
+                    <i class="fa fa-twitter"></i>
+                    <i class="fa fa-instagram"></i>
+                    <i class="fa fa-pinterest"></i>
+                    <i class="fa fa-google"></i>
+
+                    <p>Three stage encryption, multipayer firewalls, and extensive app protetion.</p>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <h4> Subscribe </h4>
+                    <p>Immerse yourself in the ultimate cloud based application. Risk-free. Try for free today.</p>
+                    <form>
+                        <input type="text" name="email">
+                        <button type="submit" name="button">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-----FOOTER-->
+    <footer id="main-footer">
+        <div class="container">
+            <div class="row center-xs center-sm center-md center-lg">
+                <div class="col-xs-12col-sm-12 col-md-12col-lg-12">
+                    <p>Copyright &copy;2019 | AppPrawject ACA </p>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+</body>
+
+</html>
+

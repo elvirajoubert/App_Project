@@ -3,14 +3,16 @@ using System;
 using AppPrawject.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AppPrawject.Data.Migrations
 {
     [DbContext(typeof(AppPrawjectDbContext))]
-    partial class AppPrawjectDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190611001624_initial-for-sqlite")]
+    partial class initialforsqlite
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -306,11 +308,6 @@ namespace AppPrawject.Data.Migrations
                         new
                         {
                             Id = 40,
-                            Description = "Cat"
-                        },
-                        new
-                        {
-                            Id = 41,
                             Description = "Pitbull"
                         });
                 });
@@ -395,15 +392,15 @@ namespace AppPrawject.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c7de4ddb-9c1f-464a-80d3-cd5d2ce1c51a",
-                            ConcurrencyStamp = "db7b5ff3-0776-476a-8b8e-b181a1790209",
+                            Id = "2045c760-e6ca-4c8b-907b-1f6dbf301da2",
+                            ConcurrencyStamp = "d005a790-24a3-483a-aec1-00ef53cb8830",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         },
                         new
                         {
-                            Id = "bb319c7c-c142-4123-b788-0e1eb2ffb8fe",
-                            ConcurrencyStamp = "0a3a7783-5fc4-4910-ab00-3537da259edb",
+                            Id = "b5a75374-d7a1-4924-ab70-e4a40e254864",
+                            ConcurrencyStamp = "7784141e-72c2-40ce-99a8-fde56d486954",
                             Name = "Provider",
                             NormalizedName = "PROVIDER"
                         });
