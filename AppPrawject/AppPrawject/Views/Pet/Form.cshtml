@@ -12,7 +12,7 @@
 
     var action = Model == null ? "Add" : "Edit";
 
-    var petBreeds = ViewData["PetBreeds"] as ICollection<PetBreed>; //ICollection<PetBreed>
+    var petBreeds = ViewData["PetBreeds"] as ICollection<PetBreed>;
     IEnumerable<SelectListItem> petItems = new SelectList(petBreeds, "Id", "Description");
 
 }
@@ -31,7 +31,7 @@ else
 
 
 <form asp-action="@action" asp-controller="pet" method="post">
-    @*<div asp-validation-summary="All"></div>*@
+    <div asp-validation-summary="All"></div>
     <div class="form-group">
         <label asp-for="Name"></label>
         <input class="form-control" asp-for="Name">
@@ -44,7 +44,6 @@ else
         <input class="form-control" asp-for="Weight">
         <span asp-validation-for="Weight"></span>
     </div>
-
     <div class="form-group">
         <label asp-for="Image"></label>
         <input class="form-control" asp-for="Image">

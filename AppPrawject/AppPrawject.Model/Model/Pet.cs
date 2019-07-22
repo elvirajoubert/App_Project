@@ -16,6 +16,7 @@ namespace AppPrawject.Domain.Model
 
         public string Image { get; set; }
 
+
         // Fully Defined Relationship for PetBreed
 
         [Display(Name = "Pet Breed")]
@@ -24,7 +25,7 @@ namespace AppPrawject.Domain.Model
 
         //Fully Defined Relationship for AppUser
         public string AppUserId { get; set; }
-        public AppUser Admin { get; set; }
+        public AppUser Provider { get; set; }
 
         public ICollection<Service> ServiceType { get; set; }
 

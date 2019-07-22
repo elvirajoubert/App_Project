@@ -29,8 +29,8 @@ namespace AppPrawject.Data.Context
         {
             //Connection string is divided in 3 elements
             //server - database - authentication 
-            //optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=appprawject;Trusted_Connection=true");
-            optionsBuilder.UseSqlite("Data Source=C:\\Users\\Elvira KGB\\Desktop\\NETCORE\\App_Project\\AppPrawject\\AppPrawject\\app-prawject.db");
+            // optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=appprawject;Trusted_Connection=true");
+            optionsBuilder.UseSqlite("Data Source=app-prawject.db");
         }
 
 
