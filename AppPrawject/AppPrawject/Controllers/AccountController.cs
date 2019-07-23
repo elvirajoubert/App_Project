@@ -5,6 +5,11 @@ using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
 
+
+
+
+
+
 namespace AppPrawject.WebUI.Controllers
 {
     public class AccountController : Controller
@@ -13,9 +18,7 @@ namespace AppPrawject.WebUI.Controllers
         private readonly SignInManager<AppUser> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
 
-        public AccountController(UserManager<AppUser> userManager,
-            SignInManager<AppUser> signInManager,
-            RoleManager<IdentityRole> roleManager)
+        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, RoleManager<IdentityRole> roleManager)
 
         {
             _userManager = userManager;
@@ -37,7 +40,7 @@ namespace AppPrawject.WebUI.Controllers
             {
                 Roles = roles
             };
-            return View(vm);
+            return View();
         }
 
         [HttpPost]
@@ -64,7 +67,7 @@ namespace AppPrawject.WebUI.Controllers
                 {
                     //assign the selected role to the newly created user(customer or technician)
 
-                    result = await _userManager.AddToRoleAsync(newUser, "Customer");
+                    result = await _userManager.AddToRoleAsync(newUser, vm.Role);
 
                     if (result.Succeeded) //new user got assigned to a role
                     {
@@ -72,13 +75,18 @@ namespace AppPrawject.WebUI.Controllers
                         await _signInManager.SignInAsync(newUser, false);
 
                         //redirect
-                        if (vm.Role == "Provider")
+                        if (vm.Role == "ProviderController")
                         {
-                            return RedirectToAction("Index", "Provider");
+                            return RedirectToAction("Index", "ProviderController");
 
                         }
 
-                        return RedirectToAction("Index", "Provider");
+                        else if (vm.Role == "Customer")
+                        {
+                            return RedirectToAction("Index", "Customer");
+                        }
+
+                        return RedirectToAction("Index", "Account");
                     }
 
                 }

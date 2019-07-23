@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AppPrawject.WebUI.Controllers
 {
-    [Authorize(Roles = "Provider, Customer")]
+    [Authorize(Roles = "Customer, Provider")]
     public class PetController : Controller
 
     {
@@ -15,7 +15,6 @@ namespace AppPrawject.WebUI.Controllers
         private readonly IPetBreedService _petBreedService;
         private readonly UserManager<AppUser> _userManager;
 
-        public UserManager<AppUser> userManager { get; private set; }
 
         public PetController(IPetService petService, IPetBreedService petBreedService, UserManager<AppUser> userManager)
 
@@ -53,7 +52,7 @@ namespace AppPrawject.WebUI.Controllers
         }
 
 
-
+        [Authorize(Roles = "Customer")]
         [HttpPost]
         public IActionResult Add(Pet newPet)  //-> receives data from HTML form
         {
@@ -77,7 +76,7 @@ namespace AppPrawject.WebUI.Controllers
 
 
 
-
+        [Authorize(Roles = "Customer, Provider")]
         public IActionResult Detail(int id) //get id from URL
         {
             var pet = _petService.GetById(id);
